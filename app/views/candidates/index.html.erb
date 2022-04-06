@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>All Candidates by party</h1>
+<%= pie_chart Candidate.group(:party).count.map{ |k, v| [k.name, v] }.to_h, colors: ['red', 'blue', 'green', 'brown', 'orange', 'yellow', 'teal'] %>
+https://github.com/ankane/chartkick/issues/220
+
+<h1>All Candidates by Religion</h1>
+<%= column_chart Candidate.group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+
+<h1>Women Candidates by Party</h1>
+<%= pie_chart Candidate.where(gender: "female").group(:party).count.map{ |k, v| [k.name, v] }.to_h %>
+
+<h1>Evangelical Candidates by Party</h1>
+<%= bar_chart Candidate.where(religion_id: 3).group(:party).count.map{ |k, v| [k.name, v] }.to_h, xtitle: "Number of Candidates", ytitle: "Party" %>
+
+
+==============
+<h1>Candidates</h1>
+
+<div id="candidates">
+  <% @candidates.each do |candidate| %>
+    <%= render candidate %>
+    <p>
+      <%= link_to "Show this candidate", candidate %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New candidate", new_candidate_path %>
+
+
+https://chartkick.com/
