@@ -65,9 +65,12 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
-
 gem "annotate", "~> 3.2"
-
 gem "faker", "~> 2.20"
-
 gem "chartkick", "~> 4.1"
+
+# gem 'nokogiri'
+# gem 'open-uri'
+# gem 'fileutils'
+gem 'pry'
+gem 'httparty'

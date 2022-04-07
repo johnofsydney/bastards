@@ -1,3 +1,6 @@
+require 'pry'
+require 'scraper'
+
 Candidate.destroy_all
 
 Party.destroy_all
@@ -6,13 +9,15 @@ Qualification.destroy_all
 
 
 
-alp = Party.create(name: "ALP")
-liberal = Party.create(name: "Liberal")
-national = Party.create(name: "National")
-green = Party.create(name: "Green")
-one_nation = Party.create(name: "One Nation")
-palmer_united = Party.create(name: "Palmer United")
+alp = Party.create(name: "Australian Labor Party")
+liberal = Party.create(name: "Liberal Party of Australia")
+national = Party.create(name: "The Nationals")
+green = Party.create(name: "Australian Greens")
+one_nation = Party.create(name: "Pauline Hanson's One Nation")
+independent = Party.create(name: "Independent")
 other_party = Party.create(name: "Other Party")
+
+
 
 catholic = Religion.create(name: "Catholic")
 anglican = Religion.create(name: "Anglican")
@@ -35,11 +40,23 @@ qualifications = [high_school, trade, bachelor, higher_degree]
 
 genders = %w[male female]
 
-# ALP
-100.times do
+
+def decipher_party(scraped_party)
+  if Party.find_by(name: scraped_party).present?
+    return Party.find_by(name: scraped_party)
+  end
+
+  Party.find_by(name: "Other Party")
+end
+
+
+scraping_results = Scraper.new.fetch
+
+
+scraping_results.each do |mp|
   Candidate.create(
-    party: alp,
-    name: Faker::Name.name,
+    name: mp[:name],
+    party: decipher_party(mp[:party]),
     dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
     gender: genders.sample,
     religion: religions.sample,
@@ -47,86 +64,3 @@ genders = %w[male female]
   )
 end
 
-# LIB
-100.times do
-  Candidate.create(
-    party: liberal,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: %w[male male male male female].sample,
-    religion: [catholic, anglican, evangelical].sample,
-    qualification: [bachelor, higher_degree].sample
-  )
-end
-
-# National
-30.times do
-  Candidate.create(
-    party: national,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: %w[male male male male female].sample,
-    religion: [catholic, anglican].sample,
-    qualification: [high_school, trade, bachelor].sample
-  )
-end
-
-# Green
-30.times do
-  Candidate.create(
-    party: green,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: genders.sample,
-    religion: religions.sample,
-    qualification: [bachelor, higher_degree].sample
-  )
-end
-
-# One Nation
-30.times do
-  Candidate.create(
-    party: one_nation,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: genders.sample,
-    religion: [catholic, anglican].sample,
-    qualification: [high_school, trade].sample
-  )
-end
-
-# Palmer United
-30.times do
-  Candidate.create(
-    party: palmer_united,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: "male",
-    religion: [catholic, anglican].sample,
-    qualification: [high_school, trade].sample
-  )
-end
-
-
-# Other
-30.times do
-  Candidate.create(
-    party: palmer_united,
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: "male",
-    religion: [catholic, anglican].sample,
-    qualification: [high_school, trade].sample
-  )
-end
-
-# Independents
-100.times do
-  Candidate.create(
-    name: Faker::Name.name,
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: %w[female male female male female].sample,
-    religion: [catholic, anglican].sample,
-    qualification: [bachelor, higher_degree].sample
-  )
-end
