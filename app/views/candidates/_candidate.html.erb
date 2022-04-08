@@ -1,36 +1,31 @@
 <div id="<%= dom_id candidate %>">
   <p>
-    <strong>Party:</strong>
-    <%= candidate.party_id %>
-  </p>
-
-  <p>
-    <strong>Religion:</strong>
-    <%= candidate.religion_id %>
-  </p>
-
-  <p>
-    <strong>Qualification:</strong>
-    <%= candidate.qualification_id %>
-  </p>
-
-  <p>
     <strong>Name:</strong>
     <%= candidate.name %>
   </p>
 
   <p>
-    <strong>Dob:</strong>
-    <%= candidate.dob %>
+    <strong>Party:</strong>
+    <%= candidate.party.name %>
   </p>
 
   <p>
-    <strong>First elected:</strong>
-    <%= candidate.first_elected %>
+    <strong>Electorate:</strong>
+    <%= link_to( candidate.electorate.name, candidate.electorate.address) %>
   </p>
 
   <p>
-    <strong>Gender:</strong>
+    <strong>Religion (made up):</strong>
+    <%= candidate.religion.name %>
+  </p>
+
+  <p>
+    <strong>Qualification (made up):</strong>
+    <%= candidate.qualification.level %>
+  </p>
+
+  <p>
+    <strong>Gender (made up):</strong>
     <%= candidate.gender %>
   </p>
 

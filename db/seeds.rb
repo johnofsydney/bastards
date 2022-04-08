@@ -6,18 +6,29 @@ Candidate.destroy_all
 Party.destroy_all
 Religion.destroy_all
 Qualification.destroy_all
+Electorate.destroy_all
 
 
-
-alp = Party.create(name: "Australian Labor Party")
-liberal = Party.create(name: "Liberal Party of Australia")
-national = Party.create(name: "The Nationals")
-green = Party.create(name: "Australian Greens")
-one_nation = Party.create(name: "Pauline Hanson's One Nation")
-independent = Party.create(name: "Independent")
-other_party = Party.create(name: "Other Party")
+incumbent_data = Scraper.new.fetch_aph
 
 
+# create parties
+incumbent_data.map{|entry| entry[:party]}.uniq.each{ |entry| Party.create(name: entry) }
+
+# create electorates (from APH candidate data)
+incumbent_data.map{|entry| entry[:electorate]}.uniq.each{ |entry| Electorate.create(name: entry) }
+
+# Get electorate data from AEC
+electorates = Scraper.new.fetch_aec
+
+# Much overkill, but add the link to the AEC electorate page
+electorates.each do |scraped_electorate|
+  electorate = Electorate.where("name LIKE ?", scraped_electorate[:name] + "%").first
+  if electorate.present? # only lower house
+    electorate.address = "https://www.aec.gov.au/#{scraped_electorate[:link]}"
+    electorate.save
+  end
+end
 
 catholic = Religion.create(name: "Catholic")
 anglican = Religion.create(name: "Anglican")
@@ -42,25 +53,28 @@ genders = %w[male female]
 
 
 def decipher_party(scraped_party)
-  if Party.find_by(name: scraped_party).present?
-    return Party.find_by(name: scraped_party)
-  end
-
-  Party.find_by(name: "Other Party")
+  Party.find_by(name: scraped_party)
 end
 
 
-scraping_results = Scraper.new.fetch
+def decipher_electorate(scraped_electorate)
+  Electorate.find_by(name: scraped_electorate)
+end
 
 
-scraping_results.each do |mp|
+# create candidates (incumbents)
+incumbent_data.each do |mp|
   Candidate.create(
     name: mp[:name],
     party: decipher_party(mp[:party]),
+    electorate: decipher_electorate(mp[:electorate]),
     dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
     gender: genders.sample,
     religion: religions.sample,
     qualification: qualifications.sample
   )
 end
+
+
+
 
