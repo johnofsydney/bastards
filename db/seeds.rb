@@ -51,6 +51,10 @@ qualifications = [high_school, trade, bachelor, higher_degree]
 
 genders = %w[male female]
 
+['Banking', 'Law', 'Lobbying', 'Political Staffer', 'Union Official'].each do |profession|
+  Career.create(name: profession)
+end
+
 
 def decipher_party(scraped_party)
   Party.find_by(name: scraped_party)
