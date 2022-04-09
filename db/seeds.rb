@@ -12,7 +12,7 @@ Electorate.destroy_all
 incumbent_data = Scraper.new.fetch_aph
 
 
-# create parties
+# create parties (from APH candidate data)
 incumbent_data.map{|entry| entry[:party]}.uniq.each{ |entry| Party.create(name: entry) }
 
 # create electorates (from APH candidate data)
@@ -25,7 +25,7 @@ electorates = Scraper.new.fetch_aec
 electorates.each do |scraped_electorate|
   electorate = Electorate.where("name LIKE ?", scraped_electorate[:name] + "%").first
   if electorate.present? # only lower house
-    electorate.address = "https://www.aec.gov.au/#{scraped_electorate[:link]}"
+    electorate.link = "https://www.aec.gov.au/#{scraped_electorate[:link]}"
     electorate.save
   end
 end
