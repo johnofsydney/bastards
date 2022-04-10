@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @union %>
+
+<div>
+  <%= link_to "Edit this union", edit_union_path(@union) %> |
+  <%= link_to "Back to unions", unions_path %>
+
+  <%= button_to "Destroy this union", @union, method: :delete %>
+</div>

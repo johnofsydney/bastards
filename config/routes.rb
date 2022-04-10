@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :unions
+  resources :factions
   resources :careers
   resources :electorates
   resources :candidates

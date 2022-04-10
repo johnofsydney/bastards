@@ -16,15 +16,28 @@
 #
 class Candidate < ApplicationRecord
   belongs_to :party
+  belongs_to :electorate
+
+  belongs_to :faction, optional: true
+  belongs_to :union, optional: true
   belongs_to :religion, optional: true
   belongs_to :qualification, optional: true
-  belongs_to :electorate
 
   has_and_belongs_to_many :careers
 
 
 
   scope :alp, -> { Candidate.joins(:party).where(party: { name: "Australian Labor Party" }) }
+  scope :liberal, -> { Candidate.joins(:party).where(party: { name: "Liberal Party of Australia" }) }
+  scope :national, -> do
+    Candidate
+      .joins(:party)
+      .where(
+        party: { name: [
+          "The Nationals","Liberal National Party of Queensland"
+        ]}
+      )
+  end
   scope :coalition, -> do
     Candidate
       .joins(:party)

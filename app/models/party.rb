@@ -8,4 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Party < ApplicationRecord
+  has_many :factions
+  has_many :candidates
 end

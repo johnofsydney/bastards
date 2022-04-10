@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Unions</h1>
+
+<div id="unions">
+  <% @unions.each do |union| %>
+    <%= render union %>
+    <p>
+      <%= link_to "Show this union", union %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New union", new_union_path %>
