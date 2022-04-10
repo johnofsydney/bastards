@@ -24,8 +24,8 @@ class Candidate < ApplicationRecord
 
 
 
-  scope :alps, -> { Candidate.joins(:party).where(party: { name: "Australian Labor Party" }) }
-  scope :coalitions, -> do
+  scope :alp, -> { Candidate.joins(:party).where(party: { name: "Australian Labor Party" }) }
+  scope :coalition, -> do
     Candidate
       .joins(:party)
       .where(
@@ -35,12 +35,12 @@ class Candidate < ApplicationRecord
       )
   end
 
-  scope :greens, -> { Candidate.joins(:party).where(party: { name: "Australian Greens" }) }
-  scope :phons, -> { Candidate.joins(:party).where(party: { name: "Pauline Hanson's One Nation" }) }
+  scope :green, -> { Candidate.joins(:party).where(party: { name: "Australian Greens" }) }
+  scope :phon, -> { Candidate.joins(:party).where(party: { name: "Pauline Hanson's One Nation" }) }
 
-  scope :independents, -> { Candidate.joins(:party).where(party: { name: "Independent" }) }
+  scope :independent, -> { Candidate.joins(:party).where(party: { name: "Independent" }) }
 
-  scope :minors, -> do
+  scope :minor_party, -> do
     Candidate
       .joins(:party)
       .where(
@@ -54,9 +54,9 @@ class Candidate < ApplicationRecord
       )
   end
 
-  scope :lawyers, -> { Candidate.joins(:careers).where(careers: { name: "Law" }) }
-  scope :bankers, -> { Candidate.joins(:careers).where(careers: { name: "Banking" }) }
-  scope :politics, -> do
+  scope :lawyer, -> { Candidate.joins(:careers).where(careers: { name: "Law" }) }
+  scope :banker, -> { Candidate.joins(:careers).where(careers: { name: "Banking" }) }
+  scope :politic, -> do
     Candidate
       .joins(:careers)
       .where(
@@ -65,4 +65,8 @@ class Candidate < ApplicationRecord
         ]}
       )
   end
+
+  scope :catholic, -> { Candidate.joins(:religion).where(religion: { name: "Catholic" }) }
+  scope :anglican, -> { Candidate.joins(:religion).where(religion: { name: "Anglican" }) }
+  scope :evangelical, -> { Candidate.joins(:religion).where(religion: { name: "Evangelical" }) }
 end

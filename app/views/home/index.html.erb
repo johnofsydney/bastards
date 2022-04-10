@@ -1,8 +1,15 @@
-<h1>Home</h1>
+<h1>Who Are These Bastards?</h1>
+<h3>An Insight into who the candidates are for Australia's major political parties at the upcoming election</h3>
 
-<h2>under construction... 😂</h2>
+<div id="search">
+  <%= render "search_form" %>
+  <p>search for any candidate, party, faction etc (coming soon)</p>
+</div>
+
 <ul>View data by...
-  <li>Candidates</li>
+  <li><%= link_to "Candidates", "/candidates" %></li>
+  <li><%= link_to "Electorates", "/electorates" %></li>
+  <li><%= link_to "Parties", "/parties" %></li>
   <li>Parties</li>
   <li>Religion</li>
   <li>Education Qualification</li>

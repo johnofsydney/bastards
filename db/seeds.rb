@@ -36,7 +36,7 @@ evangelical = Religion.create(name: "Evangelical")
 muslim = Religion.create(name: "Muslim")
 judaism = Religion.create(name: "Judaism")
 other_religion = Religion.create(name: "Other Religion")
-no_religion = Religion.create(name: "No Religion")
+atheist = Religion.create(name: "Atheist")
 
 high_school = Qualification.create(level: "High School")
 trade = Qualification.create(level: "Trade")
@@ -44,7 +44,7 @@ bachelor = Qualification.create(level: "Bachelor")
 higher_degree = Qualification.create(level: "Higher Degree")
 
 religions = [
-  catholic, anglican, evangelical, muslim, judaism, other_religion, no_religion
+  catholic, anglican, evangelical, muslim, judaism, other_religion, atheist
 ]
 
 qualifications = [high_school, trade, bachelor, higher_degree]
@@ -104,19 +104,31 @@ incumbent_data.each do |mp|
   )
 end
 
-# add some made up optional data
-Candidate.all.shuffle.take(50).each do |candidate|
-  candidate.religion = religions.sample
-  candidate.save
-end
-
 Candidate.all.shuffle.take(50).each do |candidate|
   candidate.qualification = qualifications.sample
   candidate.save
 end
 
-Candidate.all.shuffle.take(100).each do |candidate|
-  candidate.careers = careers.shuffle.take(3)
+Candidate.all.shuffle.take(200).each do |candidate|
+  candidate.careers = careers.shuffle.take(2)
   candidate.save
 end
 
+Candidate.alp.each do |candidate|
+  candidate.religion = [catholic, anglican, judaism, muslim, catholic, anglican, catholic, anglican, atheist, atheist].sample
+  candidate.save
+end
+
+Candidate.coalition.each do |candidate|
+  candidate.religion = [catholic, anglican, evangelical, catholic, anglican].sample
+  candidate.save
+end
+
+Candidate.green.each do |candidate|
+  candidate.religion = [catholic, anglican, atheist, atheist, atheist].sample
+  candidate.save
+end
+
+Candidate.where(religion: nil).each do |candidate|
+  candidate.religion = [atheist, other_religion, muslim, judaism].sample
+end

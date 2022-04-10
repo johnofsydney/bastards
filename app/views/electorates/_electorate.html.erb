@@ -1,0 +1,28 @@
+<div id="<%= dom_id electorate %>">
+
+<h1>Candidates for <%= electorate.name.capitalize %> grouped by Religion</h1>
+<%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+
+<h1>Candidates for <%= electorate.name.capitalize %> grouped by Gender</h1>
+<%= pie_chart electorate.candidates.group(:gender).count %>
+
+<h1>Candidates for <%= electorate.name.capitalize %></h1>
+  <% electorate.candidates.each do |candidate| %>
+    <p><%= link_to candidate.name, candidate %></p>
+    <p><%= candidate.gender %></p>
+    <p><%= candidate.religion.name if candidate.religion.present? %></p>
+    <p><%= candidate.careers.map(&:name).join(', ') unless candidate.careers.empty? %></p>
+  <% end %>
+
+  <p>
+    <strong>Name:</strong>
+    <%= electorate.name %>
+  </p>
+  <p>
+    <strong>AEC information:</strong>
+    <%= link_to electorate.name, electorate.link %>
+  </p>
+
+
+
+</div>

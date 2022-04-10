@@ -1,0 +1,18 @@
+
+
+
+
+
+==============
+<h1>Electorates</h1>
+
+<div id="electorates">
+  <% @electorates.each do |electorate| %>
+
+    <p>
+      <%= link_to electorate.name, electorate %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New electorate", new_electorate_path %>

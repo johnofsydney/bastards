@@ -7,11 +7,12 @@ https://github.com/ankane/chartkick/issues/220
 <h1>All Candidates by Religion</h1>
 <%= column_chart Candidate.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
 
-<h1>Women Candidates by Party</h1>
-<%= pie_chart Candidate.where(gender: "female").group(:party).count.map{ |k, v| [k.name, v] }.to_h %>
+<h1>All Candidates by Gender</h1>
+<%= column_chart Candidate.group(:gender).count %>
 
-<h1>Evangelical Candidates by Party</h1>
-<%= bar_chart Candidate.where(religion_id: 3).group(:party).count.map{ |k, v| [k.name, v] }.to_h, xtitle: "Number of Candidates", ytitle: "Party" %>
+<h1>All Candidates by Previous Career</h1>
+<h3>Complicated! coming soon...</h3>
+
 
 
 ==============

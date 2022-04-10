@@ -3,3 +3,4 @@ class HomeController < ApplicationController
     @foo = 'foo'
   end
 end
+        
