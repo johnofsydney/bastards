@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_213350) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_215024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "candidates", force: :cascade do |t|
     t.bigint "party_id", null: false
-    t.bigint "religion_id", null: false
-    t.bigint "qualification_id", null: false
+    t.bigint "religion_id"
+    t.bigint "qualification_id"
     t.string "name"
     t.date "dob"
     t.date "first_elected"
@@ -29,6 +29,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_213350) do
     t.index ["party_id"], name: "index_candidates_on_party_id"
     t.index ["qualification_id"], name: "index_candidates_on_qualification_id"
     t.index ["religion_id"], name: "index_candidates_on_religion_id"
+  end
+
+  create_table "candidates_careers", id: false, force: :cascade do |t|
+    t.bigint "candidate_id", null: false
+    t.bigint "career_id", null: false
   end
 
   create_table "careers", force: :cascade do |t|

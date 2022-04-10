@@ -84,6 +84,7 @@ GEM
     erubi (1.10.0)
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
+    gender_detector (2.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     httparty (0.20.0)
@@ -215,6 +216,7 @@ DEPENDENCIES
   chartkick (~> 4.1)
   debug
   faker (~> 2.20)
+  gender_detector
   httparty
   importmap-rails
   jbuilder

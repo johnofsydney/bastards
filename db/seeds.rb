@@ -49,9 +49,7 @@ religions = [
 
 qualifications = [high_school, trade, bachelor, higher_degree]
 
-genders = %w[male female]
-
-['Banking', 'Law', 'Lobbying', 'Political Staffer', 'Union Official'].each do |profession|
+careers = ['Banking', 'Law', 'Lobbying', 'Political Staffer', 'Union Official'].map do |profession|
   Career.create(name: profession)
 end
 
@@ -65,20 +63,60 @@ def decipher_electorate(scraped_electorate)
   Electorate.find_by(name: scraped_electorate)
 end
 
+def strip_honorifics(name_with_honorifics)
+  name_with_honorifics.gsub('Senator the Hon ','')
+                      .gsub('Senator ','')
+                      .gsub('Ms ', '')
+                      .gsub('Mrs ', '')
+                      .gsub('Mr ', '')
+                      .gsub('Dr ', '')
+                      .gsub('Hon ', '')
+                      .gsub(' MP','')
+                      .gsub(' CSC','')
+                      .gsub(' OAM','')
+                      .gsub(' AO','')
+                      .gsub(' AM','')
+                      .gsub(',','')
+end
 
-# create candidates (incumbents)
-incumbent_data.each do |mp|
-  Candidate.create(
-    name: mp[:name],
-    party: decipher_party(mp[:party]),
-    electorate: decipher_electorate(mp[:electorate]),
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    gender: genders.sample,
-    religion: religions.sample,
-    qualification: qualifications.sample
-  )
+def estimate_gender(candidate_name)
+  gender = GenderDetector.new.get_gender(candidate_name.split(' ').first).to_s
+
+  return unless male_or_female(gender)
+
+  gender
+end
+
+def male_or_female(gender)
+  gender == 'male' || gender == 'female'
 end
 
 
+# create candidates (incumbents) with mandatory data
+incumbent_data.each do |mp|
+  candidate_name = strip_honorifics(mp[:name])
+  Candidate.create(
+    name: candidate_name,
+    party: decipher_party(mp[:party]),
+    electorate: decipher_electorate(mp[:electorate]),
+    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
+    gender: estimate_gender(candidate_name),
+  )
+end
 
+# add some made up optional data
+Candidate.all.shuffle.take(50).each do |candidate|
+  candidate.religion = religions.sample
+  candidate.save
+end
+
+Candidate.all.shuffle.take(50).each do |candidate|
+  candidate.qualification = qualifications.sample
+  candidate.save
+end
+
+Candidate.all.shuffle.take(100).each do |candidate|
+  candidate.careers = careers.shuffle.take(3)
+  candidate.save
+end
 

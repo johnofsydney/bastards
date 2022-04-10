@@ -74,3 +74,4 @@ gem "chartkick", "~> 4.1"
 # gem 'fileutils'
 gem 'pry'
 gem 'httparty'
+gem 'gender_detector'

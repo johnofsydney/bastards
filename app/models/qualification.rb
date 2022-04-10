@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Qualification < ApplicationRecord
+  has_many :candidates
 end
