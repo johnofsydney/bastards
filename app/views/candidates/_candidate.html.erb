@@ -16,16 +16,16 @@
 
   <p>
     <strong>Religion (made up):</strong>
-    <%= candidate.religion.name %>
+    <%= candidate.religion.present? ? candidate.religion.name : "Unknown" %>
   </p>
 
   <p>
     <strong>Qualification (made up):</strong>
-    <%= candidate.qualification.level %>
+    <%= candidate.qualification.present? ? candidate.qualification.level : "Unknown" %>
   </p>
 
   <p>
-    <strong>Gender (made up):</strong>
+    <strong>Gender (estimated):</strong>
     <%= candidate.gender %>
   </p>
 
