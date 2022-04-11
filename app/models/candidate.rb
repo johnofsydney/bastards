@@ -21,9 +21,10 @@ class Candidate < ApplicationRecord
   belongs_to :faction, optional: true
   belongs_to :union, optional: true
   belongs_to :religion, optional: true
-  belongs_to :qualification, optional: true
+  belongs_to :qualification_level, optional: true
+  belongs_to :field_of_study, optional: true
+  belongs_to :profession, optional: true
 
-  has_and_belongs_to_many :careers
 
 
 

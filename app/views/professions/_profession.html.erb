@@ -1,0 +1,12 @@
+<div id="<%= dom_id profession %>">
+  <p>
+    <strong>Name:</strong>
+    <%= profession.name %>
+  </p>
+
+  <p>
+    <strong>Candidates:</strong>
+    <%= profession.candidates.map{|c| c.name} %>
+  </p>
+
+</div>

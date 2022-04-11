@@ -1,31 +1,62 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>All Candidates by party</h1>
-<%= pie_chart Candidate.group(:party).count.map{ |k, v| [k.name, v] }.to_h, colors: ['red', 'blue', 'green', 'brown', 'orange', 'yellow', 'teal'] %>
-https://github.com/ankane/chartkick/issues/220
+<p>Not sure if this is useful, but it does show macro size of the data we have.</p>
+<%= pie_chart @candidates.group(:party).count.map{ |k, v| [k.name, v] }.to_h, colors: ['red', 'blue', 'green', 'brown', 'orange', 'yellow', 'teal'] %>
 
-<h1>All Candidates by Religion</h1>
-<%= column_chart Candidate.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+https://github.com/ankane/chartkick/issues/220
+<div class="flex">
+  <div>
+    <h1>All Candidates by Religion</h1>
+    <%= pie_chart @candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+  </div>
+  <div>
+    <h1>General Population by Religion</h1>
+    <%= pie_chart @genpop_religion %>
+  </div>
+  <div>
+  <p>why are they so religious?</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+</div>
+
+
+
+<div class="dave">
+  <p>
+    JC: Dave, I leave all placement to you.
+  </p>
+</div>
 
 <h1>All Candidates by Gender</h1>
-<%= column_chart Candidate.group(:gender).count %>
+<%= pie_chart @candidates.group(:gender).count %>
 
-<h1>All Candidates by Previous Career</h1>
-<h3>Complicated! coming soon...</h3>
+<h1>General Population by Gender</h1>
+<%= pie_chart @genpop_gender %>
+
+<p>why are they so male?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p>
 
 
 
 ==============
 <h1>Candidates</h1>
 
+
 <div id="candidates">
-  <% @candidates.each do |candidate| %>
-    <%= render candidate %>
-    <p>
-      <%= link_to "Show this candidate", candidate %>
-    </p>
-  <% end %>
+  <table>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.name, candidate %></td>
+        <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
+        <td><%= candidate.electorate.name %></td>
+        <td><%= candidate.party.name %></td>
+        <td><%= link_to candidate.name, candidate %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+
 
 <%= link_to "New candidate", new_candidate_path %>
 

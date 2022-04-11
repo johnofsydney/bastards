@@ -1,0 +1,11 @@
+<div id="<%= dom_id qualification_level %>">
+  <p>
+    <strong>Level:</strong>
+    <%= qualification_level.level %>
+  </p>
+
+  <p>
+    <strong>Candidate:</strong>
+    <%= qualification_level.candidates.map{ |c| c.name }%>
+  </p>
+</div>

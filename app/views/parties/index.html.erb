@@ -1,0 +1,13 @@
+
+
+==============
+<h1>Parties</h1>
+
+<div id="parties">
+  <% @parties.each do |party| %>
+
+    <p>
+      <%= link_to party.name, party %>
+    </p>
+  <% end %>
+</div>

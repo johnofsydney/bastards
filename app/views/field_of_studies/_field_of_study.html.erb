@@ -1,0 +1,11 @@
+<div id="<%= dom_id field_of_study %>">
+  <p>
+    <strong>Field:</strong>
+    <%= field_of_study.field %>
+  </p>
+
+  <p>
+    <strong>Candidates:</strong>
+    <%= field_of_study.candidates.map{|c| c.name} %>
+  </p>
+</div>

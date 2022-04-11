@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Field of studies</h1>
+
+<div id="field_of_studies">
+  <% @field_of_studies.each do |field_of_study| %>
+    <%= render field_of_study %>
+    <p>
+      <%= link_to "Show this field of study", field_of_study %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New field of study", new_field_of_study_path %>

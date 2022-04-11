@@ -6,13 +6,27 @@
 <h1>Candidates for <%= electorate.name.capitalize %> grouped by Gender</h1>
 <%= pie_chart electorate.candidates.group(:gender).count %>
 
+
+<h1>Candidates for <%= electorate.name.capitalize %> grouped by Profession</h1>
+<%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+
+
+
+
 <h1>Candidates for <%= electorate.name.capitalize %></h1>
-  <% electorate.candidates.each do |candidate| %>
-    <p><%= link_to candidate.name, candidate %></p>
-    <p><%= candidate.gender %></p>
-    <p><%= candidate.religion.name if candidate.religion.present? %></p>
-    <p><%= candidate.careers.map(&:name).join(', ') unless candidate.careers.empty? %></p>
-  <% end %>
+<div id="candidates">
+  <table>
+    <% electorate.candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.name, candidate %></td>
+        <td><%= candidate.party.name %></td>
+        <td><%= candidate.religion.name if candidate.religion.present? %></td>
+        <td><%= candidate.gender %></td>
+        <td><%= link_to candidate.name, candidate %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
   <p>
     <strong>Name:</strong>

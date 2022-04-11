@@ -6,13 +6,12 @@ Faction.destroy_all
 Union.destroy_all
 Party.destroy_all
 Religion.destroy_all
-Qualification.destroy_all
 Electorate.destroy_all
 
 
 
 incumbent_data = Scraper.new.fetch_aph
-
+# binding.pry
 
 # create parties (from APH candidate data)
 incumbent_data.map{|entry| entry[:party]}.uniq.each{ |entry| Party.create(name: entry) }
@@ -63,20 +62,10 @@ judaism = Religion.create(name: "Judaism")
 other_religion = Religion.create(name: "Other Religion")
 atheist = Religion.create(name: "Atheist")
 
-high_school = Qualification.create(level: "High School")
-trade = Qualification.create(level: "Trade")
-bachelor = Qualification.create(level: "Bachelor")
-higher_degree = Qualification.create(level: "Higher Degree")
 
 religions = [
   catholic, anglican, evangelical, muslim, judaism, other_religion, atheist
 ]
-
-qualifications = [high_school, trade, bachelor, higher_degree]
-
-careers = ['Banking', 'Law', 'Lobbying', 'Political Staffer', 'Union Official'].map do |profession|
-  Career.create(name: profession)
-end
 
 
 def decipher_party(scraped_party)
@@ -138,23 +127,13 @@ incumbent_data.each do |mp|
     party: decipher_party(mp[:party]),
     electorate: decipher_electorate(mp[:electorate]),
     dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    state: decipher_state(mp[:electorate])
+    state: decipher_state(mp[:electorate]),
+    gender: %w[male female].sample
   )
-end
-
-Candidate.all.shuffle.take(50).each do |candidate|
-  candidate.qualification = qualifications.sample
-  candidate.save
-end
-
-Candidate.all.shuffle.take(200).each do |candidate|
-  candidate.careers = careers.shuffle.take(2)
-  candidate.save
 end
 
 Candidate.alp.each do |candidate|
   candidate.religion = [catholic, anglican, judaism, muslim, catholic, anglican, catholic, anglican, atheist, atheist].sample
-  candidate.gender = %w[male male male female female].sample
   candidate.faction = alp_factions.sample
   candidate.union = Union.all.sample
   candidate.save
@@ -162,7 +141,6 @@ end
 
 Candidate.coalition.each do |candidate|
   candidate.religion = [catholic, anglican, evangelical, catholic, anglican].sample
-  candidate.gender = %w[male male male male female].sample
   candidate.faction
   candidate.save
 end
@@ -179,10 +157,13 @@ end
 
 Candidate.green.each do |candidate|
   candidate.religion = [catholic, anglican, atheist, atheist, atheist].sample
-  candidate.gender = %w[male female].sample
   candidate.save
 end
 
 Candidate.where(religion: nil).each do |candidate|
   candidate.religion = [atheist, other_religion, muslim, judaism].sample
 end
+
+
+
+

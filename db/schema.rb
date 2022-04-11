@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_10_223741) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_10_232806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,22 +27,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_223741) do
     t.string "state"
     t.bigint "faction_id"
     t.bigint "union_id"
+    t.boolean "potential_winner"
+    t.bigint "qualification_level_id"
+    t.bigint "field_of_study_id"
+    t.bigint "profession_id"
     t.index ["electorate_id"], name: "index_candidates_on_electorate_id"
     t.index ["faction_id"], name: "index_candidates_on_faction_id"
+    t.index ["field_of_study_id"], name: "index_candidates_on_field_of_study_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
+    t.index ["profession_id"], name: "index_candidates_on_profession_id"
+    t.index ["qualification_level_id"], name: "index_candidates_on_qualification_level_id"
     t.index ["religion_id"], name: "index_candidates_on_religion_id"
     t.index ["union_id"], name: "index_candidates_on_union_id"
-  end
-
-  create_table "candidates_careers", id: false, force: :cascade do |t|
-    t.bigint "candidate_id", null: false
-    t.bigint "career_id", null: false
-  end
-
-  create_table "careers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "electorates", force: :cascade do |t|
@@ -60,8 +56,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_223741) do
     t.index ["party_id"], name: "index_factions_on_party_id"
   end
 
+  create_table "field_of_studies", force: :cascade do |t|
+    t.string "field"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parties", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "qualification_levels", force: :cascade do |t|
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,7 +94,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_223741) do
 
   add_foreign_key "candidates", "electorates"
   add_foreign_key "candidates", "factions"
+  add_foreign_key "candidates", "field_of_studies"
   add_foreign_key "candidates", "parties"
+  add_foreign_key "candidates", "professions"
+  add_foreign_key "candidates", "qualification_levels"
   add_foreign_key "candidates", "religions"
   add_foreign_key "candidates", "unions"
   add_foreign_key "factions", "parties"

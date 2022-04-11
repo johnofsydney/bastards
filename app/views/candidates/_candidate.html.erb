@@ -1,32 +1,12 @@
 <div id="<%= dom_id candidate %>">
-  <p>
-    <strong>Name:</strong>
-    <%= candidate.name %>
-  </p>
-
-  <p>
-    <strong>Party:</strong>
-    <%= candidate.party.name %>
-  </p>
-
-  <p>
-    <strong>Electorate:</strong>
-    <%= link_to( candidate.electorate.name, candidate.electorate.link) %>
-  </p>
-
-  <p>
-    <strong>Religion (made up):</strong>
-    <%= candidate.religion.present? ? candidate.religion.name : "Unknown" %>
-  </p>
-
-  <p>
-    <strong>Qualification (made up):</strong>
-    <%= candidate.qualification.present? ? candidate.qualification.level : "Unknown"%>
-  </p>
-
-  <p>
-    <strong>Gender (estimated):</strong>
-    <%= candidate.gender %>
-  </p>
+  <table>
+      <tr>
+        <li><%= link_to candidate.name, candidate %></li>
+        <li><%= candidate.party.name %></li>
+        <li><%= candidate.religion.name if candidate.religion.present? %></li>
+        <li><%= candidate.gender %></li>
+        <li><%= link_to candidate.name, candidate %></li>
+      </tr>
+  </table>
 
 </div>

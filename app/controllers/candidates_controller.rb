@@ -4,6 +4,19 @@ class CandidatesController < ApplicationController
   # GET /candidates or /candidates.json
   def index
     @candidates = Candidate.all
+    @genpop_religion = {
+      anglican: 10,
+      catholic: 10,
+      evangelical: 5,
+      judaism: 1,
+      muslim: 1,
+      atheist: 50,
+      undecided: 23
+    }
+    @genpop_gender = {
+      men: 50,
+      women: 50,
+    }
   end
 
   # GET /candidates/1 or /candidates/1.json

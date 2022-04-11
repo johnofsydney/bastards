@@ -1,0 +1,54 @@
+<div id="<%= dom_id party %>">
+<h1><%= party.name %></h1>
+
+<div class="flex-container religion">
+  <div>
+    <h2><%= party.name %> by Religion</h2>
+    <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+  </div>
+  <div>
+    <h2>General Population by Religion</h2>
+    <%= pie_chart @genpop_religion %>
+  </div>
+  <div>
+  <h2>why are they so religious?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+</div>
+
+<div class="flex-container profession">
+  <div>
+    <h2><%= party.name %> by Profession</h2>
+    <%= pie_chart @party.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+  </div>
+  <div>
+    <h2>General Population by Profession</h2>
+    <%= pie_chart @genpop_profession %>
+  </div>
+  <div>
+  <h2>why are they so something?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+</div>
+
+<div class="flex-container field_of_study">
+  <div>
+    <h2><%= party.name %> by Field Of Study</h2>
+    <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.field, v] }.to_h %>
+  </div>
+  <div>
+    <h2>General Population by Field Of Study</h2>
+    <%= pie_chart @genpop_field_of_study %>
+  </div>
+  <div>
+  <h2>why are they so something?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+</div>
+
+
+  <table>
+      <tr>
+        <li><%= party.name %></li>
+        <li><%= party.candidates.map{ |c| c.name } if party.candidates.present? %></li>
+      </tr>
+  </table>
+
+</div>

@@ -1,0 +1,12 @@
+<div id="<%= dom_id religion %>">
+  <p>
+    <strong>Name:</strong>
+    <%= religion.name %>
+  </p>
+
+  <p>
+    <strong>Candidates:</strong>
+    <%= religion.candidates.map{|c| c.name} %>
+  </p>
+
+</div>

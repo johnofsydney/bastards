@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Qualification levels</h1>
+
+<div id="qualification_levels">
+  <% @qualification_levels.each do |qualification_level| %>
+    <%= render qualification_level %>
+    <p>
+      <%= link_to "Show this qualification level", qualification_level %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New qualification level", new_qualification_level_path %>

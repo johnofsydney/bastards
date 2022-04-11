@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Professions</h1>
+
+<div id="professions">
+  <% @professions.each do |profession| %>
+    <%= render profession %>
+    <p>
+      <%= link_to "Show this profession", profession %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New profession", new_profession_path %>

@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Religions</h1>
+
+<div id="religions">
+  <% @religions.each do |religion| %>
+    <%= render religion %>
+    <p>
+      <%= link_to "Show this religion", religion %>
+    </p>
+  <% end %>
+</div>
