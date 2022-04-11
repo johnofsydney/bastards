@@ -1,20 +1,60 @@
 require 'pry'
-require 'scraper'
+require 'data/massaged_data'
 
 Candidate.destroy_all
-Faction.destroy_all
-Union.destroy_all
-Party.destroy_all
-Religion.destroy_all
 Electorate.destroy_all
+Faction.destroy_all
+FieldOfStudy.destroy_all
+Party.destroy_all
+Profession.destroy_all
+QualificationLevel.destroy_all
+Religion.destroy_all
+Union.destroy_all
+
+#####################################################################
+# import data from lib/data/massaged_data.rb
+incumbent_data = MASSAGED_DATA
 
 
-
-incumbent_data = Scraper.new.fetch_aph
-# binding.pry
-
-# create parties (from APH candidate data)
 incumbent_data.map{|entry| entry[:party]}.uniq.each{ |entry| Party.create(name: entry) }
+incumbent_data.map{|entry| entry[:electorate]}.uniq.each{ |entry| Electorate.create(name: entry) }
+# TODO: add here
+# factions (BELONG TO CANDIDATE AND PARTY)
+# unions
+# field of studies
+# level of qualification
+# religion
+
+def get_party_record(party_name)
+  Party.find_by(name: party_name)
+end
+
+def get_electorate_record(electorate_name)
+  Electorate.find_by(name: electorate_name)
+end
+
+# create candidates (incumbents) with mandatory data
+incumbent_data.each do |mp|
+  Candidate.create(
+    name: mp[:name],
+    party: get_party_record(mp[:party]),
+    electorate: get_electorate_record(mp[:electorate]),
+    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
+    state: mp[:state],
+    gender: mp[:gender],
+  )
+end
+# TODO: add factions, unions, religion etc from actual data
+
+#####################################################################
+
+
+
+
+
+#####################################################################
+######################## Dummy Data #################################
+#####################################################################
 
 # create factions - alp
 alp_factions = ["left", "right", "hard left"].map do |name|
@@ -39,20 +79,6 @@ end
   Union.create(name: name)
 end
 
-# create electorates (from APH candidate data)
-incumbent_data.map{|entry| entry[:electorate]}.uniq.each{ |entry| Electorate.create(name: entry) }
-
-# Get electorate data from AEC
-electorates = Scraper.new.fetch_aec
-
-# Much overkill, but add the link to the AEC electorate page
-electorates.each do |scraped_electorate|
-  electorate = Electorate.where("name LIKE ?", scraped_electorate[:name] + "%").first
-  if electorate.present? # only lower house
-    electorate.link = "https://www.aec.gov.au/#{scraped_electorate[:link]}"
-    electorate.save
-  end
-end
 
 catholic = Religion.create(name: "Catholic")
 anglican = Religion.create(name: "Anglican")
@@ -62,101 +88,62 @@ judaism = Religion.create(name: "Judaism")
 other_religion = Religion.create(name: "Other Religion")
 atheist = Religion.create(name: "Atheist")
 
+school = QualificationLevel.create(level: "High Scool")
+trade = QualificationLevel.create(level: "Trade")
+bachelor = QualificationLevel.create(level: "Bachelor Degree")
+higher_degree = QualificationLevel.create(level: "HigherDegree")
 
-religions = [
-  catholic, anglican, evangelical, muslim, judaism, other_religion, atheist
-]
+arts = FieldOfStudy.create(field: "Arts")
+science = FieldOfStudy.create(field: "Science")
+medicine = FieldOfStudy.create(field: "Medicine")
+law = FieldOfStudy.create(field: "Law")
+engineering = FieldOfStudy.create(field: "Engineering")
 
-
-def decipher_party(scraped_party)
-  Party.find_by(name: scraped_party)
-end
-
-
-def decipher_electorate(scraped_electorate)
-  Electorate.find_by(name: scraped_electorate)
-end
-
-def decipher_state(scraped_electorate)
-  return "NSW"if scraped_electorate.index("New South Wales")
-  return "Tasmania"if scraped_electorate.index("Tasmania")
-  return "WA" if scraped_electorate.index("Western Australia")
-  return "VIC" if scraped_electorate.index("Victoria")
-  return "SA" if scraped_electorate.index("South Australia")
-  return "QLD" if scraped_electorate.index("Queensland")
-  return "NT" if scraped_electorate.index("Northern Territory")
-  return "ACT" if scraped_electorate.index("Australian Capital Territory")
-
-  return "foobar"
-end
-
-def strip_honorifics(name_with_honorifics)
-  name_with_honorifics.gsub('Senator the Hon ','')
-                      .gsub('Senator ','')
-                      .gsub('Ms ', '')
-                      .gsub('Mrs ', '')
-                      .gsub('Mr ', '')
-                      .gsub('Dr ', '')
-                      .gsub('Hon ', '')
-                      .gsub(' MP','')
-                      .gsub(' CSC','')
-                      .gsub(' OAM','')
-                      .gsub(' AO','')
-                      .gsub(' AM','')
-                      .gsub(',','')
-end
-
-def estimate_gender(candidate_name)
-  gender = GenderDetector.new.get_gender(candidate_name.split(' ').first).to_s
-
-  return unless male_or_female(gender)
-
-  gender
-end
-
-def male_or_female(gender)
-  gender == 'male' || gender == 'female'
-end
+union_official = Profession.create(name: "Union Official")
+political_staffer = Profession.create(name: "Political Staffer")
+lawyer = Profession.create(name: "Lawyer")
+banker = Profession.create(name: "Banker")
+doctor = Profession.create(name: "Doctor")
+teacher = Profession.create(name: "Teacher")
+farmer = Profession.create(name: "Farmer")
 
 
-# create candidates (incumbents) with mandatory data
-incumbent_data.each do |mp|
-  candidate_name = strip_honorifics(mp[:name])
-  Candidate.create(
-    name: candidate_name,
-    party: decipher_party(mp[:party]),
-    electorate: decipher_electorate(mp[:electorate]),
-    dob: Faker::Date.between(from: 65.years.ago, to: 35.years.ago),
-    state: decipher_state(mp[:electorate]),
-    gender: %w[male female].sample
-  )
-end
 
 Candidate.alp.each do |candidate|
   candidate.religion = [catholic, anglican, judaism, muslim, catholic, anglican, catholic, anglican, atheist, atheist].sample
   candidate.faction = alp_factions.sample
   candidate.union = Union.all.sample
+  candidate.qualification_level = [trade, bachelor, higher_degree].sample
+  candidate.field_of_study = [arts, science, law, engineering, medicine].sample
+  candidate.profession = [union_official, political_staffer, doctor, teacher].sample
   candidate.save
 end
 
 Candidate.coalition.each do |candidate|
   candidate.religion = [catholic, anglican, evangelical, catholic, anglican].sample
+  candidate.field_of_study = [arts, law, engineering, medicine].sample
   candidate.faction
   candidate.save
 end
 
 Candidate.liberal.each do |candidate|
   candidate.faction = lib_factions.sample
+  candidate.qualification_level = [bachelor, higher_degree].sample
+  candidate.profession = [political_staffer, doctor, lawyer, banker].sample
   candidate.save
 end
 
 Candidate.national.each do |candidate|
   candidate.faction = nat_factions.sample
+  candidate.qualification_level = [school, trade, bachelor].sample
+  candidate.profession = [political_staffer, lawyer, farmer].sample
   candidate.save
 end
 
 Candidate.green.each do |candidate|
   candidate.religion = [catholic, anglican, atheist, atheist, atheist].sample
+  candidate.qualification_level = [bachelor, higher_degree].sample
+  candidate.profession = [union_official, political_staffer, teacher].sample
   candidate.save
 end
 

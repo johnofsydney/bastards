@@ -1,5 +1,5 @@
 [
-    {:name=>"Senator the Hon Eric Abetz", :electorate=>"Tasmania", :party=>"Liberal Party of Australia"},
+  {:name=>"Senator the Hon Eric Abetz", :electorate=>"Tasmania", :party=>"Liberal Party of Australia"},
   {:name=>"Hon Anthony Albanese MP", :electorate=>"Grayndler, New South Wales", :party=>"Australian Labor Party"},
   {:name=>"Dr Katie Allen MP", :electorate=>"Higgins, Victoria", :party=>"Liberal Party of Australia"},
   {:name=>"Dr Anne Aly MP", :electorate=>"Cowan, Western Australia", :party=>"Australian Labor Party"},
