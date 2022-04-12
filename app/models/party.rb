@@ -1,3 +1,11 @@
+class Party < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: :name
+
+  has_many :factions
+  has_many :candidates
+end
+
 # == Schema Information
 #
 # Table name: parties
@@ -7,7 +15,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Party < ApplicationRecord
-  has_many :factions
-  has_many :candidates
-end

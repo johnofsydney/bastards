@@ -75,3 +75,4 @@ gem "chartkick", "~> 4.1"
 gem 'pry'
 gem 'httparty'
 gem 'gender_detector'
+gem 'pg_search'

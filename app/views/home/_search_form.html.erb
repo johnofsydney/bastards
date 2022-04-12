@@ -1,4 +1,4 @@
-<%= form_for :anything, url: "my_controller/my_action" do |form| %>
-  <%= form.text_field :search %>
+<%= form_for :query, url: "home/search", method: :get do |form| %>
+  <%= form.text_field :search_terms %>
   <%= form.submit  "Search our database" %>
 <% end  %>

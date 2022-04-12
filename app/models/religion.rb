@@ -1,3 +1,10 @@
+class Religion < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: :name
+
+  has_many :candidates
+end
+
 # == Schema Information
 #
 # Table name: religions
@@ -7,6 +14,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Religion < ApplicationRecord
-  has_many :candidates
-end
