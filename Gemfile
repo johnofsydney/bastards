@@ -76,3 +76,10 @@ gem 'pry'
 gem 'httparty'
 gem 'gender_detector'
 gem 'pg_search'
+
+gem 'jquery-rails'
+gem "bootstrap", "~> 5.1"
+
+gem "bootstrap-sass", "~> 3.4"
+
+gem "font-awesome-sass", "~> 6.1"
