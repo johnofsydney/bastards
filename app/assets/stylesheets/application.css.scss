@@ -14,8 +14,30 @@
  *= require_self
  */
 
-
+@import "_variables";
+@import 'bootstrap';
+@import 'font-awesome';
 
 .flex-container {
   display: flex;
+}
+
+.region {
+  padding: 3rem 0;
+}
+
+a.navbar-brand {
+  font-family: $heading-font;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bg-dark {
+  background-color: $bg-dark-background;
+  color: $bg-dark-text;
+  a {
+    color: inherit;
+  }
 }
