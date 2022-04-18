@@ -1,3 +1,5 @@
+require 'data/general_population'
+
 class ReligionsController < ApplicationController
   before_action :set_religion, only: %i[ show edit update destroy ]
 
