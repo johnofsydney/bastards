@@ -1,3 +1,5 @@
+require 'data/general_population'
+
 class PartiesController < ApplicationController
   before_action :set_party, only: %i[ show edit update destroy ]
 
@@ -8,29 +10,11 @@ class PartiesController < ApplicationController
   end
 
   def show
-    @genpop_religion = {
-      anglican: 10,
-      catholic: 10,
-      evangelical: 5,
-      judaism: 1,
-      muslim: 1,
-      atheist: 50,
-      undecided: 23
-    }
-    @genpop_gender = {
-      men: 50,
-      women: 50,
-    }
-    @genpop_profession = {
-      butcher: 33,
-      baker: 33,
-      candlestick_maker: 34
-    }
-    @genpop_field_of_study = {
-      medicine: 33,
-      teaching: 33,
-      science: 34
-    }
+    @genpop_gender = GeneralPopulation.gender
+    @genpop_religion = GeneralPopulation.religion
+    @genpop_qualification_level = GeneralPopulation.qualification_level
+    @genpop_profession = GeneralPopulation.profession
+    @genpop_field_of_study = GeneralPopulation.field_of_study
   end
 
   private

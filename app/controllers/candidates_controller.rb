@@ -1,22 +1,14 @@
+require 'data/general_population'
+
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: %i[ show edit update destroy ]
 
   # GET /candidates or /candidates.json
   def index
     @candidates = Candidate.all
-    @genpop_religion = {
-      anglican: 10,
-      catholic: 10,
-      evangelical: 5,
-      judaism: 1,
-      muslim: 1,
-      atheist: 50,
-      undecided: 23
-    }
-    @genpop_gender = {
-      men: 50,
-      women: 50,
-    }
+    @genpop_religion = GeneralPopulation.religion
+    @genpop_gender = GeneralPopulation.gender
+
   end
 
   # GET /candidates/1 or /candidates/1.json
