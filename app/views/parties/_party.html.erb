@@ -4,6 +4,7 @@
 <div class="flex-container religion">
   <div>
     <h2><%= party.name %> by Religion</h2>
+    TODO - use controller variable for the chart. Maybe.
     <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
   </div>
   <div>
@@ -18,6 +19,7 @@
 <div class="flex-container profession">
   <div>
     <h2><%= party.name %> by Profession</h2>
+    TODO - use controller variable for the chart. Maybe.
     <%= pie_chart @party.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
   </div>
   <div>
@@ -32,7 +34,8 @@
 <div class="flex-container field_of_study">
   <div>
     <h2><%= party.name %> by Field Of Study</h2>
-    <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.field, v] }.to_h %>
+    TODO - use controller variable for the chart. Maybe.
+    <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.name, v] }.to_h %>
   </div>
   <div>
     <h2>General Population by Field Of Study</h2>

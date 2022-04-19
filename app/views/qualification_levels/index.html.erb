@@ -2,6 +2,25 @@
 
 <h1>Qualification levels</h1>
 
+<p>On average, our politicians are more well qualified relative to the population they represent.</p>
+
+<div>
+  <h2>General Population by Qualification Level</h2>
+  <%= pie_chart @genpop_qualification_levels %>
+</div>
+<div>
+  <h2>ALP by Qualification Level</h2>
+  <%= pie_chart @alp_qualification_levels %>
+</div>
+<div>
+  <h2>Liberals by Qualification Level</h2>
+  <%= pie_chart @lib_qualification_levels %>
+</div>
+<div>
+  <h2>Nationals by Qualification Level</h2>
+  <%= pie_chart @nat_qualification_levels %>
+</div>
+
 <div id="qualification_levels">
   <% @qualification_levels.each do |qualification_level| %>
     <%= render qualification_level %>

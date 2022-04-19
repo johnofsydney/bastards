@@ -2,6 +2,27 @@
 
 <h1>Professions</h1>
 
+<p>We found that the politicians have a very limited scope of profssional experience relative to the generql population they claim to represent. Weird!</p>
+
+  <div>
+    <h2>General Population by Profession</h2>
+    <%= pie_chart @genpop_professions %>
+  </div>
+  <div>
+    <h2>ALP by Profession</h2>
+    <%= pie_chart @alp_professions %>
+  </div>
+  <div>
+    <h2>Liberals by Profession</h2>
+    <%= pie_chart @lib_professions %>
+  </div>
+  <div>
+    <h2>Nationals by Profession</h2>
+    <%= pie_chart @nat_professions %>
+  </div>
+
+
+
 <div id="professions">
   <% @professions.each do |profession| %>
     <%= render profession %>
@@ -11,4 +32,3 @@
   <% end %>
 </div>
 
-<%= link_to "New profession", new_profession_path %>
