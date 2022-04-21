@@ -4,7 +4,7 @@ class Ingestor
   WHITELIST = ["Name", "Gender", "Party", "Seat", "State", "Faction", "Union", "Religion", "DOB", "Predominant Career", "Qualification Level", "Qualifications Field"]
 
   def initialize
-    csv_file = File.open("tmp/Pollies_data.csv", "r")
+    csv_file = File.open("sheet_data/Pollies_data.csv", "r")
     lines = csv_file.readlines
     lines.shift(2) # remove top two lines and let them disappear
 
