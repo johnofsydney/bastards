@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_011147) do
 
   create_table "factions", force: :cascade do |t|
     t.string "name"
-    t.bigint "party_id"
+    t.bigint "party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["party_id"], name: "index_factions_on_party_id"
