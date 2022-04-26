@@ -1,42 +1,56 @@
 <div id="<%= dom_id electorate %>">
 
-<h1>Candidates for <%= electorate.name.capitalize %> grouped by Religion</h1>
-<%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Religion</h1>
+  <%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
 
-<h1>Candidates for <%= electorate.name.capitalize %> grouped by Gender</h1>
-<%= pie_chart electorate.candidates.group(:gender).count %>
-
-
-<h1>Candidates for <%= electorate.name.capitalize %> grouped by Profession</h1>
-<%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Gender</h1>
+  <%= pie_chart electorate.candidates.group(:gender).count %>
 
 
+  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Profession</h1>
+  <%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+
+  <div id="candidates">
+    <table id="electorate-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Electorate</th>
+          <th>Party</th>
+          <th>Religion</th>
+          <th>Profession</th>
+        </tr>
+      </thead>
+      <% electorate.candidates.each do |candidate| %>
+        <tr>
+          <td><%= link_to candidate.name, candidate %></td>
+          <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
+          <td><%= link_to candidate.party.name, candidate.party %></td>
+          <td><%= link_to candidate.religion.name, candidate.religion %></td>
+          <td><%= link_to candidate.profession.name, candidate.profession %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
 
-<h1>Candidates for <%= electorate.name.capitalize %></h1>
-<div id="candidates">
-  <table>
-    <% electorate.candidates.each do |candidate| %>
-      <tr>
-        <td><%= link_to candidate.name, candidate %></td>
-        <td><%= candidate.party.name %></td>
-        <td><%= candidate.religion.name if candidate.religion.present? %></td>
-        <td><%= candidate.gender %></td>
-        <td><%= link_to candidate.name, candidate %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
 
   <p>
-    <strong>Name:</strong>
-    <%= electorate.name %>
-  </p>
-  <p>
-    <strong>AEC information:</strong>
-    <%= link_to electorate.name, electorate.link %>
+    <%= link_to "AEC information for #{electorate.name}", electorate.link %>
   </p>
 
 
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#electorate-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

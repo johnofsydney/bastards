@@ -1,73 +1,100 @@
 <div id="<%= dom_id party %>">
-<h1><%= party.name %></h1>
+  <h1><%= party.name %></h1>
 
-<div class="flex-container religion row">
-  <div class="col-lg-3">
-    <h3><%= party.name %> by Religion</h3>
-    TODO - use controller variable for the chart. Maybe.
-    <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
-  </div>
-  <div class="col-lg-3">
-    <h3>General Population by Religion</h3>
-    <%= pie_chart @genpop_religion %>
-  </div>
-  <div class="col-lg-6">
-  <h3>why are they so religious?</h3>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
-</div>
-
-<div class="flex-container profession row">
-  <div class="col-lg-3">
-    <h3><%= party.name %> by Profession</h3>
-    TODO - use controller variable for the chart. Maybe.
-    <%= pie_chart @party.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
-  </div>
-  <div class="col-lg-3">
-    <h3>General Population by Profession</h3>
-    <%= pie_chart @genpop_profession %>
-  </div>
-  <div class="col-lg-6">
-  <h3>why are they so something?</h3>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
-</div>
-
-<div class="flex-container field_of_study row">
-  <div class="col-lg-3">
-    <h3><%= party.name %> by Field Of Study</h3>
-    TODO - use controller variable for the chart. Maybe.
-    <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.name, v] }.to_h %>
-  </div>
-  <div class="col-lg-3">
-    <h3>General Population by Field Of Study</h3>
-    <%= pie_chart @genpop_field_of_study %>
-  </div>
-  <div class="col-lg-6">
-  <h3>why are they so something?</h3>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
-</div>
-
-
-<div class="flex-container religion row">
-  <h2 class="col-lg-12">Religion</h2>
-  <div class="col-lg-3">
-    <h3><%= party.name %></h3>
-    TODO - use controller variable for the chart. Maybe.
-    <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
-  </div>
-  <div class="col-lg-3">
-    <h3>General Population</h3>
-    <%= pie_chart @genpop_religion %>
-  </div>
-  <div class="col-lg-6">
+  <div class="flex-container religion row">
+    <div class="col-lg-3">
+      <h3><%= party.name %> by Religion</h3>
+      TODO - use controller variable for the chart. Maybe.
+      <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+    </div>
+    <div class="col-lg-3">
+      <h3>General Population by Religion</h3>
+      <%= pie_chart @genpop_religion %>
+    </div>
+    <div class="col-lg-6">
     <h3>why are they so religious?</h3>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+  </div>
+
+  <div class="flex-container profession row">
+    <div class="col-lg-3">
+      <h3><%= party.name %> by Profession</h3>
+      TODO - use controller variable for the chart. Maybe.
+      <%= pie_chart @party.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+    </div>
+    <div class="col-lg-3">
+      <h3>General Population by Profession</h3>
+      <%= pie_chart @genpop_profession %>
+    </div>
+    <div class="col-lg-6">
+    <h3>why are they so something?</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+  </div>
+
+  <div class="flex-container field_of_study row">
+    <div class="col-lg-3">
+      <h3><%= party.name %> by Field Of Study</h3>
+      TODO - use controller variable for the chart. Maybe.
+      <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.name, v] }.to_h %>
+    </div>
+    <div class="col-lg-3">
+      <h3>General Population by Field Of Study</h3>
+      <%= pie_chart @genpop_field_of_study %>
+    </div>
+    <div class="col-lg-6">
+    <h3>why are they so something?</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+  </div>
+
+
+  <div class="flex-container religion row">
+    <h2 class="col-lg-12">Religion</h2>
+    <div class="col-lg-3">
+      <h3><%= party.name %></h3>
+      TODO - use controller variable for the chart. Maybe.
+      <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+    </div>
+    <div class="col-lg-3">
+      <h3>General Population</h3>
+      <%= pie_chart @genpop_religion %>
+    </div>
+    <div class="col-lg-6">
+      <h3>why are they so religious?</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+  </div>
+
+  <div id="candidates">
+    <table id="party-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Electorate</th>
+          <th>Party</th>
+          <th>Religion</th>
+          <th>Profession</th>
+        </tr>
+      </thead>
+      <% @party.candidates.each do |candidate| %>
+        <tr>
+          <td><%= link_to candidate.name, candidate %></td>
+          <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
+          <td><%= link_to candidate.party.name, candidate.party %></td>
+          <td><%= link_to candidate.religion.name, candidate.religion %></td>
+          <td><%= link_to candidate.profession.name, candidate.profession %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
-  <table>
-      <tr>
-        <li><%= party.name %></li>
-        <li><%= party.candidates.map{ |c| c.name } if party.candidates.present? %></li>
-      </tr>
-  </table>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-</div>
+<script>
+$(document).ready(function() {
+    $('#party-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

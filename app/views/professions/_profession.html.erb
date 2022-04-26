@@ -1,12 +1,29 @@
 <div id="<%= dom_id profession %>">
-  <p>
-    <strong>Name:</strong>
-    <%= profession.name %>
-  </p>
 
-  <p>
-    <strong>Candidates:</strong>
-    <%= profession.candidates.map{|c| c.name} %>
-  </p>
+
+  <h2><%= link_to profession.name, profession %></h2>
+
+  <div id="religion-candidates">
+    <table id="profession-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Electorate</th>
+          <th>Party</th>
+          <th>Religion</th>
+          <th>Profession</th>
+        </tr>
+      </thead>
+      <% profession.candidates.each do |candidate| %>
+        <tr>
+          <td><%= link_to candidate.name, candidate %></td>
+          <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
+          <td><%= link_to candidate.party.name, candidate.party %></td>
+          <td><%= link_to candidate.religion.name, candidate.religion %></td>
+          <td><%= link_to candidate.profession.name, candidate.profession %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
 </div>

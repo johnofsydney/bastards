@@ -1,12 +1,26 @@
 <div id="<%= dom_id union %>">
-  <p>
-    <strong>Name:</strong>
-    <%= union.name %>
-  </p>
+  <h2><%= link_to union.name, union %></h2>
 
-  <p>
-    <strong>Candidate:</strong>
-    <%= union.candidates.map{|c| c.name} %>
-  </p>
-
+  <div id="union-candidates">
+    <table id="candidate-union-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Electorate</th>
+          <th>Party</th>
+          <th>Religion</th>
+          <th>Profession</th>
+        </tr>
+      </thead>
+      <% union.candidates.each do |candidate| %>
+        <tr>
+          <td><%= link_to candidate.name, candidate %></td>
+          <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
+          <td><%= link_to candidate.party.name, candidate.party %></td>
+          <td><%= link_to candidate.religion.name, candidate.religion %></td>
+          <td><%= link_to candidate.profession.name, candidate.profession %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
