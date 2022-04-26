@@ -1,15 +1,5 @@
 <div id="<%= dom_id electorate %>">
-
-  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Religion</h1>
-  <%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
-
-  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Gender</h1>
-  <%= pie_chart electorate.candidates.group(:gender).count %>
-
-
-  <h1>Candidates for <%= electorate.name.capitalize %> grouped by Profession</h1>
-  <%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
-
+  <h1>Candidates for <%= electorate.name.capitalize %></h1>
   <div id="candidates">
     <table id="electorate-candidate-table" class="table table-striped">
       <thead>
@@ -32,6 +22,18 @@
       <% end %>
     </table>
   </div>
+
+  <h3>grouped by Religion</h3>
+  <%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+
+  <h3>grouped by Gender</h3>
+  <%= pie_chart electorate.candidates.group(:gender).count %>
+
+
+  <h3>grouped by Profession</h3>
+  <%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
+
+
 
 
 
