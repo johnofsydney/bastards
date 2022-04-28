@@ -43,14 +43,14 @@ https://github.com/ankane/chartkick/issues/220
 
 
 <div id="candidates">
-  <table id="candidate-candidate-table" class="table table-striped">
+  <table id="candidate-candidate-table" class="table table-striped responsive-table">
     <thead>
       <tr>
         <th>Candidate</th>
         <th>Electorate</th>
         <th>Party</th>
-        <th>Religion</th>
-        <th>Profession</th>
+        <th class="d-none d-lg-table-cell">Religion</th>
+        <th class="d-none d-lg-table-cell">Profession</th>
       </tr>
     </thead>
     <% @candidates.each do |candidate| %>
@@ -58,8 +58,8 @@ https://github.com/ankane/chartkick/issues/220
         <td><%= link_to candidate.name, candidate %></td>
         <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
         <td><%= link_to candidate.party.name, candidate.party %></td>
-        <td><%= link_to candidate.religion.name, candidate.religion %></td>
-        <td><%= link_to candidate.profession.name, candidate.profession %></td>
+        <td class="d-none d-lg-table-cell"><%= link_to candidate.religion.name, candidate.religion %></td>
+        <td class="d-none d-lg-table-cell"><%= link_to candidate.profession.name, candidate.profession %></td>
       </tr>
     <% end %>
   </table>
