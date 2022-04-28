@@ -1,4 +1,8 @@
-<%= form_for :query, url: "home/search", method: :get do |form| %>
-  <%= form.text_field :search_terms %>
-  <%= form.submit  "Search our database" %>
+<%= form_for :query, class: 'search-form', url: "home/search", method: :get do |form| %>
+  <div class="input-group">
+    <div class="form-outline">
+  <%= form.text_field :search_terms , class: 'form-control rounded input-search'%>
+  <%= form.submit 'Search', class: 'input-search-button btn-primary rounded' %>
+    </div>
+  </div>
 <% end  %>
