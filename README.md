@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+rbenv init
+eval "$(rbenv init - zsh)"
+rbenv shell 3.0.0
+bundle exec rails server 
+

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :electorates
   resources :candidates
   resources :about
+  resources :faqs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get 'home/search' => 'home#search'
