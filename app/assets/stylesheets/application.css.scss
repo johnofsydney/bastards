@@ -23,7 +23,7 @@
 }
 
 .region {
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 a.navbar-brand {
@@ -48,4 +48,32 @@ a.navbar-brand {
 
 .col-lg-* {
   margin-bottom: 0.5rem;
+}
+
+.input-search {
+  border: 1px solid $bg-dark-background;
+}
+
+.form-outline {
+  position: relative;
+  input.input-search-button {
+    line-height: 1.5;
+    padding: 0.33rem 0.75rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+#search {
+  max-width: 440px;
+  margin: auto;
+  padding: 0 12px;
+  .form-outline {
+    width: 100%;
+  }
+}
+
+.container-search {
+  margin-bottom: 2rem;
 }
