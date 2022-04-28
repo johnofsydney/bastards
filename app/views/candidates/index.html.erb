@@ -1,17 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>All Candidates by party</h1>
+<h1>All Candidates</h1>
+<h3>by party</h3>
 <p>Not sure if this is useful, but it does show macro size of the data we have.</p>
-<%= pie_chart @candidates.group(:party).count.map{ |k, v| [k.name, v] }.to_h, colors: ['red', 'blue', 'green', 'brown', 'orange', 'yellow', 'teal'] %>
 
-https://github.com/ankane/chartkick/issues/220
+<%= pie_chart @candidates_by_party_data, colors: @party_colors %>
+
+
 <div class="flex">
   <div>
-    <h1>All Candidates by Religion</h1>
+    <h3>All Candidates by Religion</h3>
     <%= pie_chart @candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
   </div>
   <div>
-    <h1>General Population by Religion</h1>
+    <h3>General Population by Religion</h3>
     <%= pie_chart @genpop_religion %>
   </div>
   <div>
@@ -31,7 +33,7 @@ https://github.com/ankane/chartkick/issues/220
 <%= pie_chart @candidates.group(:gender).count %>
 
 <h1>General Population by Gender</h1>
-<%= pie_chart @genpop_gender %>
+<%= pie_chart @genpop_gender, colors: @gender_colors%>
 
 <p>why are they so male?</p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p>
