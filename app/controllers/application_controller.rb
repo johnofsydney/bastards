@@ -43,5 +43,15 @@ class ApplicationController < ActionController::Base
       .map{ |record, count| [record.name, count] } # combine to array
       .to_h           # convert to a hash
   end
+
+  def set_colors(data, color_map)
+    color_array = []
+
+    data.each do |score, _|
+      color_array << color_map[score]
+    end
+
+    color_array
+  end
 end
 

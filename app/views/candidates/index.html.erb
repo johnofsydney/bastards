@@ -4,7 +4,7 @@
 
 <h2>All Candidates by party</h2>
 <p>Not sure if this is useful, but it does show macro size of the data we have.</p>
-<%= pie_chart @candidates_by_party_data, colors: @party_colors %>
+<%= pie_chart @candidates_by_party_data, colors: @party_colors_for_candidates %>
 
 <div class="flex-container religion row">
   <h2 class="col-lg-12">Religion</h2>
@@ -25,15 +25,15 @@
 </div>
 
 
-<div class="flex-container religion row">
+<div class="flex-container gender row">
   <h2 class="col-lg-12">Gender</h2>
   <div class="col-lg-3">
     <h2>All Candidates</h2>
-    <%= pie_chart @candidates.group(:gender).count %>
+    <%= pie_chart @candidates_by_gender_data, colors: @gender_colors_for_candidates %>
   </div>
   <div class="col-lg-3">
     <h2>General Population</h2>
-    <%= pie_chart @genpop_gender, colors: @gender_colors%>
+    <%= pie_chart @genpop_gender, colors: @gender_colors_for_genpop%>
   </div>
   <div class="col-lg-6">
     <h2>why are they so male?</h2>
