@@ -1,86 +1,79 @@
 <div id="<%= dom_id party %>">
   <h1><%= party.name %></h1>
 
-  <div class="flex-container religion row">
+  <div class="alert alert-warning alert-dismissible fade show">
+    Skip to the <a href="#data">data</a>
+  </div>
+
+  <h2 class="group-header">Religion</h2>
+  <div class="flex-container religion row category-row">
     <div class="col-lg-3">
-      <h3><%= party.name %> by Religion</h3>
+      <h4><%= party.name %></h4>
       TODO - use controller variable for the chart. Maybe.
       <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
     </div>
     <div class="col-lg-3">
-      <h3>General Population by Religion</h3>
+      <h4>General Population</h4>
       <%= pie_chart @genpop_religion %>
     </div>
     <div class="col-lg-6">
-    <h3>why are they so religious?</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+      <h4>why are they so religious?</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
   </div>
 
-  <div class="flex-container profession row">
+  <h2 class="group-header">Profession</h2>
+  <div class="flex-container profession row category-row">
     <div class="col-lg-3">
-      <h3><%= party.name %> by Profession</h3>
+      <h4><%= party.name %></h4>
       TODO - use controller variable for the chart. Maybe.
       <%= pie_chart @party.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
     </div>
     <div class="col-lg-3">
-      <h3>General Population by Profession</h3>
+      <h4>General Population</h4>
       <%= pie_chart @genpop_profession %>
     </div>
     <div class="col-lg-6">
-    <h3>why are they so something?</h3>
+    <h4>why are they so something?</h4>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
   </div>
 
-  <div class="flex-container field_of_study row">
+
+  <h2 class="group-header">Field of study</h2>
+  <div class="flex-container field_of_study row category-row last-row">
     <div class="col-lg-3">
-      <h3><%= party.name %> by Field Of Study</h3>
+      <h4><%= party.name %></h4>
       TODO - use controller variable for the chart. Maybe.
       <%= pie_chart @party.candidates.joins(:field_of_study).group(:field_of_study).count.map{ |k, v| [k.name, v] }.to_h %>
     </div>
     <div class="col-lg-3">
-      <h3>General Population by Field Of Study</h3>
+      <h4>General Population</h4>
       <%= pie_chart @genpop_field_of_study %>
     </div>
     <div class="col-lg-6">
-    <h3>why are they so something?</h3>
+    <h4>why are they so something?</h4>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
   </div>
 
 
-  <div class="flex-container religion row">
-    <h2 class="col-lg-12">Religion</h2>
-    <div class="col-lg-3">
-      <h3><%= party.name %></h3>
-      TODO - use controller variable for the chart. Maybe.
-      <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
-    </div>
-    <div class="col-lg-3">
-      <h3>General Population</h3>
-      <%= pie_chart @genpop_religion %>
-    </div>
-    <div class="col-lg-6">
-      <h3>why are they so religious?</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
-  </div>
 
-  <div id="candidates">
+  <a id='data'></a>
+  <div id="candidates" class="data-block">
+    <h2 class="data-heading">Candidates</h2>
     <table id="party-candidate-table" class="table table-striped">
       <thead>
         <tr>
           <th>Candidate</th>
           <th>Electorate</th>
-          <th>Party</th>
-          <th>Religion</th>
-          <th>Profession</th>
+          <th class="d-none d-lg-table-cell">Religion</th>
+          <th class="d-none d-lg-table-cell">Profession</th>
         </tr>
       </thead>
       <% @party.candidates.each do |candidate| %>
         <tr>
           <td><%= link_to candidate.name, candidate %></td>
           <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
-          <td><%= link_to candidate.party.name, candidate.party %></td>
-          <td><%= link_to candidate.religion.name, candidate.religion %></td>
-          <td><%= link_to candidate.profession.name, candidate.profession %></td>
+          <td class="d-none d-lg-table-cell"><%= link_to candidate.religion.name, candidate.religion %></td>
+          <td class="d-none d-lg-table-cell"><%= link_to candidate.profession.name, candidate.profession %></td>
         </tr>
       <% end %>
     </table>
