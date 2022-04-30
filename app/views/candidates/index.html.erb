@@ -27,15 +27,28 @@
 
 <div class="flex-container gender row">
   <h2 class="col-lg-12">Gender</h2>
+  <div class="col-lg-2">
+    <h2>Legend</h2>
+      <div class="legend blue">Male</div>
+      <div class="legend pink">Female</div>
+  </div>
   <div class="col-lg-3">
-    <h2>All Candidates</h2>
-    <%= pie_chart @candidates_by_gender_data, colors: @gender_colors_for_candidates %>
+    <h2>Candidates</h2>
+    <%= pie_chart(
+      @candidates_by_gender_data,
+      colors: @gender_colors_for_candidates,
+      legend: false
+    ) %>
   </div>
   <div class="col-lg-3">
     <h2>General Population</h2>
-    <%= pie_chart @genpop_gender, colors: @gender_colors_for_genpop%>
+    <%= pie_chart(
+      @genpop_gender,
+      colors: @gender_colors_for_genpop,
+      legend: false
+    ) %>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <h2>why are they so male?</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non
       pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto,
