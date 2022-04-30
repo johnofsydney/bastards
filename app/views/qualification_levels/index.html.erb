@@ -21,10 +21,37 @@
   <%= pie_chart @nat_qualification_levels %>
 </div>
 
-<div id="qualification_levels">
-  <% @qualification_levels.each do |qualification_level| %>
-    <%= render qualification_level %>
-  <% end %>
-</div>
+
+  <div id="qualification-level-candidates">
+    <table id="qualification-level-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Party</th>
+          <th>Qualification Level</th>
+        </tr>
+      </thead>
+      <% @candidates.each do |candidate| %>
+        <tr>
+          <td><%= safe_link_to(candidate) %></td>
+          <td><%= safe_link_to(candidate.party) %></td>
+          <td><%= safe_link_to(candidate.qualification_level) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#qualification-level-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>
 
 

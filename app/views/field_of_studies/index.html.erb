@@ -21,8 +21,35 @@
     <%= pie_chart @nat_field_of_studies %>
   </div>
 
-<div id="field_of_studies">
-  <% @field_of_studies.each do |field_of_study| %>
-    <%= render field_of_study %>
-  <% end %>
-</div>
+
+  <div id="field-of-study-candidates">
+    <table id="field-of-study-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Party</th>
+          <th>Field Of Study</th>
+        </tr>
+      </thead>
+      <% @candidates.each do |candidate| %>
+        <tr>
+          <td><%= safe_link_to(candidate) %></td>
+          <td><%= safe_link_to(candidate.party) %></td>
+          <td><%= safe_link_to(candidate.field_of_study) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#field-of-study-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

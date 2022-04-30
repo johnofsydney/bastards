@@ -14,6 +14,8 @@ class QualificationLevelsController < ApplicationController
 
     # finally the list of all religions
     @qualification_levels = QualificationLevel.all
+
+    @candidates = Candidate.all
   end
 
   # GET /qualification_levels/1 or /qualification_levels/1.json

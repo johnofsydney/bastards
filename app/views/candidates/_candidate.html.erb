@@ -1,12 +1,35 @@
-<div id="<%= dom_id candidate %>">
-  <table>
-      <tr>
-        <li><%= link_to candidate.name, candidate %></li>
-        <li><%= candidate.party.name %></li>
-        <li><%= candidate.religion.name if candidate.religion.present? %></li>
-        <li><%= candidate.gender %></li>
-        <li><%= link_to candidate.name, candidate %></li>
-      </tr>
-  </table>
-
-</div>
+<h2><%= safe_link_to(candidate) %></h2>
+<table style="width:100%">
+  <tr>
+    <th>Name:</th>
+    <td><%= safe_link_to(candidate) %></td>
+  </tr>
+  <tr>
+    <th>Gender:</th>
+    <td><%=  candidate.gender %></td>
+  </tr>
+  <tr>
+    <th>Religion:</th>
+    <td><%= safe_link_to(candidate.religion) %></td>
+  </tr>
+  <tr>
+    <th>Profession:</th>
+    <td><%= safe_link_to(candidate.profession) %></td>
+  </tr>
+  <tr>
+    <th>Union:</th>
+    <td><%= safe_link_to(candidate.union) %></td>
+  </tr>
+  <tr>
+    <th>Faction:</th>
+    <td><%= safe_link_to(candidate.faction) %></td>
+  </tr>
+  <tr>
+    <th>Field of Study:</th>
+    <td><%= safe_link_to(candidate.field_of_study) %></td>
+  </tr>
+  <tr>
+    <th>Qualification Level:</th>
+    <td><%= safe_link_to(candidate.qualification_level) %></td>
+  </tr>
+</table>

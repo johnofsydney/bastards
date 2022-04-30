@@ -14,6 +14,8 @@ class ProfessionsController < ApplicationController
 
     # finally the list of all professions
     @professions = Profession.all
+
+    @candidates = Candidate.all
   end
 
   # GET /professions/1 or /professions/1.json

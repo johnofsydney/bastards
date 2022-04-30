@@ -13,6 +13,8 @@ class ReligionsController < ApplicationController
 
     # finally the list of all religions
     @religions = Religion.all
+
+    @candidates = Candidate.all
   end
 
   def show

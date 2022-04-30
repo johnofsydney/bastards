@@ -14,6 +14,8 @@ class FieldOfStudiesController < ApplicationController
 
     # finally the list of all fields of study
     @field_of_studies = FieldOfStudy.all
+
+    @candidates = Candidate.all
   end
 
   # GET /field_of_studies/1 or /field_of_studies/1.json

@@ -1,13 +1,28 @@
-
-
-==============
 <h1>Parties</h1>
 
 <div id="parties">
-  <% @parties.each do |party| %>
-
-    <p>
-      <%= link_to party.name, party %>
-    </p>
-  <% end %>
+  <table id="party-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Party</th>
+      </tr>
+    </thead>
+    <% @parties.each do |party| %>
+      <tr>
+        <td><%= safe_link_to(party) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#party-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

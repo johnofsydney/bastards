@@ -23,12 +23,36 @@
 
 
 
-<div id="professions">
-  <% @professions.each do |profession| %>
-    <%= render profession %>
-    <p>
-      <%= link_to "Show this profession", profession %>
-    </p>
-  <% end %>
+<h1>Candidates</h1>
+
+
+<div id="candidates">
+  <table id="profession-candidate-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Profession</th>
+      </tr>
+    </thead>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= safe_link_to(candidate) %></td>
+        <td><%= safe_link_to(candidate.party) %></td>
+        <td><%= safe_link_to(candidate.profession) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#profession-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

@@ -1,16 +1,28 @@
-
-
-
-
-
-==============
 <h1>Electorates</h1>
 
 <div id="electorates">
-  <% @electorates.each do |electorate| %>
-
-    <p>
-      <%= link_to electorate.name, electorate %>
-    </p>
-  <% end %>
+  <table id="electorate-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Electorate</th>
+      </tr>
+    </thead>
+    <% @electorates.each do |electorate| %>
+      <tr>
+        <td><%= safe_link_to(electorate) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#electorate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>
