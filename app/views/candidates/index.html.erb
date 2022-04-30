@@ -1,77 +1,81 @@
-<p style="color: green"><%= notice %></p>
+<div class="alert alert-warning alert-dismissible fade show">
+  Skip to the <a href="#data">data</a>
+</div>
 
-<h1>All Candidates</h1>
-<h3>by party</h3>
+<h2>All Candidates by party</h2>
 <p>Not sure if this is useful, but it does show macro size of the data we have.</p>
-
 <%= pie_chart @candidates_by_party_data, colors: @party_colors %>
 
-
-<div class="flex">
-  <div>
-    <h3>All Candidates by Religion</h3>
-    <%= pie_chart @candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
+<div class="flex-container religion row">
+  <h2 class="col-lg-12">Religion</h2>
+  <div class="col-lg-3">
+    <h2>All Candidates</h2>
+    <%= pie_chart @candidates.joins(:religion).group(:religion).count.map { |k, v| [k.name, v] }.to_h %>
   </div>
-  <div>
-    <h3>General Population by Religion</h3>
+  <div class="col-lg-3">
+    <h2>General Population</h2>
     <%= pie_chart @genpop_religion %>
   </div>
-  <div>
-  <p>why are they so religious?</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
+  <div class="col-lg-6">
+    <h2>why are they so religious?</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non
+      pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto,
+      tempore sunt.</p>
+  </div>
 </div>
 
 
+<div class="flex-container religion row">
+  <h2 class="col-lg-12">Gender</h2>
+  <div class="col-lg-3">
+    <h2>All Candidates</h2>
+    <%= pie_chart @candidates.group(:gender).count %>
+  </div>
+  <div class="col-lg-3">
+    <h2>General Population</h2>
+    <%= pie_chart @genpop_gender, colors: @gender_colors%>
+  </div>
+  <div class="col-lg-6">
+    <h2>why are they so male?</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non
+      pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto,
+      tempore sunt.</p>
+  </div>
+</div>
 
-<h1>All Candidates by Gender</h1>
-<%= pie_chart @candidates.group(:gender).count %>
-
-<h1>General Population by Gender</h1>
-<%= pie_chart @genpop_gender, colors: @gender_colors%>
-
-<p>why are they so male?</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p>
-
-
-
-==============
-<h1>Candidates</h1>
-
-
-<div id="candidates">
-  <table id="candidate-candidate-table" class="table table-striped">
+<a id='data'></a>
+<div id="candidates" class="data-block">
+  <h2 class="data-heading">Candidates</h2>
+  <table id="candidate-candidate-table" class="table table-striped responsive-table">
     <thead>
-      <tr>
-        <th>Candidate</th>
-        <th>Electorate</th>
-        <th>Party</th>
-      </tr>
+    <tr>
+      <th>Candidate</th>
+      <th>Electorate</th>
+      <th>Party</th>
+      <th class="d-none d-lg-table-cell">Religion</th>
+      <th class="d-none d-lg-table-cell">Profession</th>
+    </tr>
     </thead>
     <% @candidates.each do |candidate| %>
       <tr>
         <td><%= safe_link_to(candidate) %></td>
         <td><%= safe_link_to(candidate.electorate) %></td>
         <td><%= safe_link_to(candidate.party) %></td>
+        <td class="d-none d-lg-table-cell"><%= safe_link_to(candidate.religion) %></td>
+        <td class="d-none d-lg-table-cell"><%= safe_link_to(candidate.profession) %></td>
       </tr>
     <% end %>
   </table>
 </div>
 
-
-
-
-
-
-https://chartkick.com/
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#candidate-candidate-table').DataTable({
-      paging: false,
-      searching: false
+    $(document).ready(function () {
+        $('#candidate-candidate-table').DataTable({
+            paging: false,
+            searching: false
+        });
     });
-} );
 </script>

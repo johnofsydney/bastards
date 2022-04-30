@@ -77,3 +77,24 @@ a.navbar-brand {
 .container-search {
   margin-bottom: 2rem;
 }
+
+.data-heading {
+  margin: 1rem 0;
+}
+
+h2.group-header {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+  width: fit-content;
+}
+
+.category-row {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid lightgrey;
+  > div {
+      margin: 0.5rem 0;
+  }
+
+}
