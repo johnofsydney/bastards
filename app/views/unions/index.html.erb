@@ -2,8 +2,34 @@
 
 <h1>Unions</h1>
 
-<div id="unions">
-  <% @unions.each do |union| %>
-    <%= render union %>
-  <% end %>
+
+<div id="candidates">
+  <table id="union-candidate-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Union</th>
+      </tr>
+    </thead>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= safe_link_to(candidate) %></td>
+        <td><%= safe_link_to(candidate.party) %></td>
+        <td><%= safe_link_to(candidate.union) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#union-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

@@ -4,7 +4,7 @@
 
 <h2>All Candidates by party</h2>
 <p>Not sure if this is useful, but it does show macro size of the data we have.</p>
-<%= pie_chart @candidates.group(:party).count.map { |k, v| [k.name, v] }.to_h, colors: ['red', 'blue', 'green', 'brown', 'orange', 'yellow', 'teal'] %>
+<%= pie_chart @candidates_by_party_data, colors: @party_colors_for_candidates %>
 
 <div class="flex-container religion row">
   <h2 class="col-lg-12">Religion</h2>
@@ -25,15 +25,15 @@
 </div>
 
 
-<div class="flex-container religion row">
+<div class="flex-container gender row">
   <h2 class="col-lg-12">Gender</h2>
   <div class="col-lg-3">
     <h2>All Candidates</h2>
-    <%= pie_chart @candidates.group(:gender).count %>
+    <%= pie_chart @candidates_by_gender_data, colors: @gender_colors_for_candidates %>
   </div>
   <div class="col-lg-3">
     <h2>General Population</h2>
-    <%= pie_chart @genpop_gender %>
+    <%= pie_chart @genpop_gender, colors: @gender_colors_for_genpop%>
   </div>
   <div class="col-lg-6">
     <h2>why are they so male?</h2>
@@ -58,22 +58,15 @@
     </thead>
     <% @candidates.each do |candidate| %>
       <tr>
-        <td><%= link_to candidate.name, candidate %></td>
-        <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
-        <td><%= link_to candidate.party.name, candidate.party %></td>
-        <td class="d-none d-lg-table-cell"><%= link_to candidate.religion.name, candidate.religion %></td>
-        <td class="d-none d-lg-table-cell"><%= link_to candidate.profession.name, candidate.profession %></td>
+        <td><%= safe_link_to(candidate) %></td>
+        <td><%= safe_link_to(candidate.electorate) %></td>
+        <td><%= safe_link_to(candidate.party) %></td>
+        <td class="d-none d-lg-table-cell"><%= safe_link_to(candidate.religion) %></td>
+        <td class="d-none d-lg-table-cell"><%= safe_link_to(candidate.profession) %></td>
       </tr>
     <% end %>
   </table>
 </div>
-
-
-
-
-
-
-https://chartkick.com/
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

@@ -4,6 +4,7 @@ class UnionsController < ApplicationController
   # GET /unions or /unions.json
   def index
     @unions = Union.all
+    @candidates = Candidate.all
   end
 
   # GET /unions/1 or /unions/1.json
