@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_19_011147) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_01_031346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_011147) do
     t.bigint "qualification_level_id"
     t.bigint "field_of_study_id"
     t.bigint "profession_id"
+    t.integer "year_first_elected"
+    t.float "margin"
     t.index ["electorate_id"], name: "index_candidates_on_electorate_id"
     t.index ["faction_id"], name: "index_candidates_on_faction_id"
     t.index ["field_of_study_id"], name: "index_candidates_on_field_of_study_id"
@@ -50,10 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_011147) do
 
   create_table "factions", force: :cascade do |t|
     t.string "name"
-    t.bigint "party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["party_id"], name: "index_factions_on_party_id"
   end
 
   create_table "field_of_studies", force: :cascade do |t|
@@ -109,5 +109,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_011147) do
   add_foreign_key "candidates", "qualification_levels"
   add_foreign_key "candidates", "religions"
   add_foreign_key "candidates", "unions"
-  add_foreign_key "factions", "parties"
 end

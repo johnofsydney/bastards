@@ -1,12 +1,35 @@
 <div id="<%= dom_id faction %>">
-  <p>
-    <strong>Name:</strong>
-    <%= faction.name %>
-  </p>
+  <h2><%= faction.name %></h2>
 
-  <p>
-    <strong>Candidates:</strong>
-    <%= faction.candidates.map{|c| c.name} %>
-  </p>
-
+  <div id="faction-candidates">
+    <table id="faction-candidate-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Electorate</th>
+          <th>Party</th>
+        </tr>
+      </thead>
+      <% faction.candidates.each do |candidate| %>
+        <tr>
+          <td><%= safe_link_to(candidate) %></td>
+          <td><%= safe_link_to(candidate.electorate) %></td>
+          <td><%= safe_link_to(candidate.party) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#faction-candidate-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>
