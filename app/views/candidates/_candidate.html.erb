@@ -42,7 +42,7 @@
   </tr>
   <tr>
     <th>First Elected:</th>
-    <td><%= candidate.year_first_elected > 0 ? candidate.year_first_elected : "N/A" %></td>
+    <td><%= candidate.year_first_elected.present? ? candidate.year_first_elected : "N/A" %></td>
   </tr>
   <tr>
     <th>Margin:</th>

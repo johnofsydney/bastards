@@ -13,6 +13,9 @@ class CandidatesController < ApplicationController
     @candidates_by_party_data = group_by_party(@candidates)
     @candidates_by_gender_data = @candidates.group(:gender).count
 
+    @alp_candidates_by_gender_data = Candidate.alp.group(:gender).count
+    @coalition_candidates_by_gender_data = Candidate.coalition.group(:gender).count
+
 
 
 
@@ -28,6 +31,16 @@ class CandidatesController < ApplicationController
 
     @gender_colors_for_candidates = set_colors(
       @candidates_by_gender_data,
+      Color.gender_colors_hash
+    )
+
+    @gender_colors_for_alp_candidates = set_colors(
+      @alp_candidates_by_gender_data,
+      Color.gender_colors_hash
+    )
+
+    @gender_colors_for_coalition_candidates = set_colors(
+      @coalition_candidates_by_gender_data,
       Color.gender_colors_hash
     )
   end

@@ -31,6 +31,7 @@ candidate_data.each do |candidate|
   end
 
   margin = candidate['Margin'].to_f
+  year_first_elected = candidate['Year first elected'].to_i
 
   Candidate.create(
     name: candidate["Name"],
@@ -45,14 +46,10 @@ candidate_data.each do |candidate|
     qualification_level: QualificationLevel.find_or_create_by(name: candidate["Qualification Level"]),
     field_of_study: FieldOfStudy.find_or_create_by(name: candidate["Qualifications Field"]),
     dob: date_parser(candidate['DOB']),
-    year_first_elected: candidate['Year first elected'].to_i,
+    year_first_elected: year_first_elected == 0 ? nil : year_first_elected,
     margin: margin == 0.0 ? nil : margin
   )
 end
-# TODO: add factions, unions, religion etc from actual data
-
-#####################################################################
-
 
 p "********** Seeding is Complete **********"
 p "*****************************************"
