@@ -99,12 +99,41 @@ h2.group-header {
 
 }
 
-.legend.blue {
+.legend {
+  margin-right: 20px;
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 0.75rem;
+    margin-right: 5px;
+  }
+  &.blue:before {
     background-color: blue;
-    color: white;
+  }
+  &.pink:before {
+    background-color: pink;
+  }
+  &.red:before {
+    background-color: red;
+  }
+  &.green:before {
+    background-color: green;
+  }
+  &.purple:before {
+    background-color: purple;
+  }
+  &.yellow:before {
+    background-color: yellow;
+  }
 }
 
-.legend.pink {
-    background-color: pink;
-    color: black;
-}
+//.legend.blue {
+//    background-color: blue;
+//    color: white;
+//}
+//
+//.legend.pink {
+//    background-color: pink;
+//    color: black;
+//}
