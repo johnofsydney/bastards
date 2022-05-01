@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Factions</h1>
 
 <div id="factions">
-  <% @factions.each do |faction| %>
-    <%= render faction %>
-    <p>
-      <%= link_to "Show this faction", faction %>
-    </p>
-  <% end %>
+  <table id="faction-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Faction</th>
+      </tr>
+    </thead>
+    <% @factions.each do |faction| %>
+      <tr>
+        <td><%= safe_link_to(faction) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-<%= link_to "New faction", new_faction_path %>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#faction-table').DataTable({
+      paging: false,
+      searching: false
+    });
+} );
+</script>

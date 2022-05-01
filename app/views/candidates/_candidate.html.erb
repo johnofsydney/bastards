@@ -9,6 +9,10 @@
     <td><%=  candidate.gender %></td>
   </tr>
   <tr>
+    <th>Age:</th>
+    <td><%=  candidate.age %></td>
+  </tr>
+  <tr>
     <th>Religion:</th>
     <td><%= safe_link_to(candidate.religion) %></td>
   </tr>
@@ -31,5 +35,17 @@
   <tr>
     <th>Qualification Level:</th>
     <td><%= safe_link_to(candidate.qualification_level) %></td>
+  </tr>
+  <tr>
+    <th>Electorate:</th>
+    <td><%= safe_link_to(candidate.electorate) %></td>
+  </tr>
+  <tr>
+    <th>First Elected:</th>
+    <td><%= candidate.year_first_elected > 0 ? candidate.year_first_elected : "N/A" %></td>
+  </tr>
+  <tr>
+    <th>Margin:</th>
+    <td><%= candidate.margin.present? ? candidate.margin : '' %></td>
   </tr>
 </table>

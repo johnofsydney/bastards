@@ -70,6 +70,18 @@ class Candidate < ApplicationRecord
   scope :catholic, -> { Candidate.joins(:religion).where(religion: { name: "Catholic" }) }
   scope :anglican, -> { Candidate.joins(:religion).where(religion: { name: "Anglican" }) }
   scope :evangelical, -> { Candidate.joins(:religion).where(religion: { name: "Evangelical" }) }
+
+  def age
+    return 'Unknown' unless dob.present?
+
+    age = Date.today.year - dob.year
+    age -= 1 if Date.today < dob + age.years
+    age
+  end
+
+  def incumbent?
+    self.year_first_elected.present?
+  end
 end
 
 # == Schema Information
@@ -80,9 +92,11 @@ end
 #  dob                    :date
 #  first_elected          :date
 #  gender                 :string
+#  margin                 :float
 #  name                   :string
 #  potential_winner       :boolean
 #  state                  :string
+#  year_first_elected     :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  electorate_id          :bigint           not null

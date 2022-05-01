@@ -15,8 +15,23 @@ Union.destroy_all
 #####################################################################
 candidate_data = Ingestor.new.massaged_data
 
+p "*****************************************"
+p "Ingesting candidate Data in the shape of"
+p candidate_data.sample
+p "*****************************************"
+
 # create candidates (incumbents) with mandatory data
 candidate_data.each do |candidate|
+
+  def date_parser(value)
+    # assume text is some kind of texty date. if parsing fails, rescue and return nil
+    Date.parse(value.to_s)
+  rescue # yes everything
+    nil
+  end
+
+  margin = candidate['Margin'].to_f
+
   Candidate.create(
     name: candidate["Name"],
     state: candidate["State"],
@@ -24,11 +39,14 @@ candidate_data.each do |candidate|
     party: Party.find_or_create_by(name: candidate["Party"]),
     electorate: Electorate.find_or_create_by(name: candidate["Seat"]),
     faction: Faction.find_or_create_by(name: candidate["Faction"]),
-    union: Union.find_or_create_by(name: candidate["Union"]),
-    religion: Religion.find_or_create_by(name: candidate["Religion"]),
+    union: Union.find_or_create_or_nil(name: candidate["Union"]),
+    religion: Religion.find_or_create_or_unknown(name: candidate["Religion"]),
     profession: Profession.find_or_create_by(name: candidate["Predominant Career"]),
     qualification_level: QualificationLevel.find_or_create_by(name: candidate["Qualification Level"]),
     field_of_study: FieldOfStudy.find_or_create_by(name: candidate["Qualifications Field"]),
+    dob: date_parser(candidate['DOB']),
+    year_first_elected: candidate['Year first elected'].to_i,
+    margin: margin == 0.0 ? nil : margin
   )
 end
 # TODO: add factions, unions, religion etc from actual data
@@ -36,7 +54,5 @@ end
 #####################################################################
 
 
-
-
-
-
+p "********** Seeding is Complete **********"
+p "*****************************************"
