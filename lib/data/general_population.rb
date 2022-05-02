@@ -8,15 +8,20 @@ class GeneralPopulation
 
   def self.religion
     {
-      "Anglican" =>10,
-      "Catholic" =>10,
-      "Evangelical" =>5,
-      "Judaism" =>1,
-      "Muslim" =>1,
-      "Atheist" =>50,
-      "Undecided" =>23
+      "No religion" => 30.1,
+      "Catholic" =>	24.7,
+      "Anglican" =>	13.3,
+      "Other Christian"	=> 12.4,
+      "Other" =>	11.7,
+      "Islam" =>	2.6,
+      "Buddhism" =>	2.4,
+      "Hinduism" =>	1.9,
+      "Sikhism" =>	0.5,
+      "Judaism" =>	0.4,
+      "Unknown" =>	0.0,
     }
   end
+
 
   def self.qualification_level
     # https://www.abs.gov.au/AUSSTATS/abs@.nsf/mediareleasesbyReleaseDate/1533FE5A8541D66CCA2581BF00362D1D
