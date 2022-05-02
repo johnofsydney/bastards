@@ -1,3 +1,5 @@
+require 'data/general_population'
+require 'data/color'
 class ReligionsController < ApplicationController
   before_action :set_religion, only: %i[ show ]
 
@@ -7,13 +9,34 @@ class ReligionsController < ApplicationController
     @genpop_religions = GeneralPopulation.religion
 
     # then the religious breakdown of the major parties
-    @alp_religions = group_by_religion(Candidate.alp)
-    @lib_religions = group_by_religion(Candidate.liberal)
-    @nat_religions = group_by_religion(Candidate.national)
+    @all_candidates_by_religion_data = group_by_religion(Candidate.all)
 
-    # finally the list of all religions
+    @alp_candidates_by_religion_data = group_by_religion(Candidate.alp)
+    @coalition_candidates_by_religion_data = group_by_religion(Candidate.coalition)
+
+
+    @religion_colors_for_genpop = set_colors(
+      @genpop_religions,
+      Color.religion_colors_hash
+    )
+
+    @religion_colors_for_all_candidates = set_colors(
+      @all_candidates_by_religion_data,
+      Color.religion_colors_hash
+    )
+
+    @religion_colors_for_alp_candidates = set_colors(
+      @alp_candidates_by_religion_data,
+      Color.religion_colors_hash
+    )
+
+    @religion_colors_for_coalition_candidates = set_colors(
+      @coalition_candidates_by_religion_data,
+      Color.religion_colors_hash
+    )
+
+
     @religions = Religion.all
-
     @candidates = Candidate.all
   end
 
