@@ -4,7 +4,7 @@
 
 <p>We have reliable data for the incumbent MPs, and have limited our data set here to those candidates. Data is from Australian Parliament House website</p>
 
-  <div>
+  <div id="legend">
     <h2>Legend</h2>
       <div class="legend red float-start float-lg-none">Professionals</div>
       <div class="legend blue float-start float-lg-none">Military</div>
@@ -26,22 +26,25 @@
       <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
       <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
       <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
-
   </div>
-  <div>
+  <div id="chart">
     <h2>General Population</h2>
       <%= pie_chart(
         @profession_data.genpop.count,
         colors: @profession_data.genpop.colors,
-        # legend: false
+        legend: false
       ) %>
   </div>
+
+
+
+  
   <div>
     <h2>ALP MPs</h2>
       <%= pie_chart(
         @profession_data.alp.count,
         colors: @profession_data.alp.colors,
-        # legend: false
+        legend: false
       ) %>
   </div>
   <div>
@@ -49,7 +52,7 @@
       <%= pie_chart(
         @profession_data.liberal.count,
         colors: @profession_data.liberal.colors,
-        # legend: false
+        legend: false
       ) %>
   </div>
   <div>
@@ -57,7 +60,7 @@
       <%= pie_chart(
         @profession_data.national.count,
         colors: @profession_data.national.colors,
-        # legend: false
+        legend: false
       ) %>
   </div>
 
