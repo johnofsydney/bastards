@@ -1,4 +1,4 @@
-<h2><%= safe_link_to(candidate) %></h2>
+<h2><%= candidate.name %></h2>
 <table style="width:100%">
   <tr>
     <th>Name:</th>
@@ -11,10 +11,6 @@
   <tr>
     <th>Age:</th>
     <td><%=  candidate.age %></td>
-  </tr>
-  <tr>
-    <th>Religion:</th>
-    <td><%= safe_link_to(candidate.religion) %></td>
   </tr>
   <tr>
     <th>Profession:</th>

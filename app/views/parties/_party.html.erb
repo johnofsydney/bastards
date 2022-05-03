@@ -5,21 +5,7 @@
     Skip to the <a href="#data">data</a>
   </div>
 
-  <h2 class="group-header">Religion</h2>
-  <div class="flex-container religion row category-row">
-    <div class="col-lg-3">
-      <h4><%= party.name %></h4>
-      TODO - use controller variable for the chart. Maybe.
-      <%= pie_chart @party.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
-    </div>
-    <div class="col-lg-3">
-      <h4>General Population</h4>
-      <%= pie_chart @genpop_religion %>
-    </div>
-    <div class="col-lg-6">
-      <h4>why are they so religious?</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto, tempore sunt.</p></div>
-  </div>
+
 
   <h2 class="group-header">Profession</h2>
   <div class="flex-container profession row category-row">
@@ -64,7 +50,6 @@
         <tr>
           <th>Candidate</th>
           <th>Electorate</th>
-          <th class="d-none d-lg-table-cell">Religion</th>
           <th class="d-none d-lg-table-cell">Profession</th>
         </tr>
       </thead>
@@ -72,7 +57,6 @@
         <tr>
           <td><%= link_to candidate.name, candidate %></td>
           <td><%= link_to candidate.electorate.name, candidate.electorate %></td>
-          <td class="d-none d-lg-table-cell"><%= link_to candidate.religion.name, candidate.religion %></td>
           <td class="d-none d-lg-table-cell"><%= link_to candidate.profession.name, candidate.profession %></td>
         </tr>
       <% end %>

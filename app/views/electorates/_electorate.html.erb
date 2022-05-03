@@ -17,8 +17,6 @@
     </table>
   </div>
 
-  <h3>grouped by Religion</h3>
-  <%= pie_chart electorate.candidates.joins(:religion).group(:religion).count.map{ |k, v| [k.name, v] }.to_h %>
 
   <h3>grouped by Gender</h3>
   <%= pie_chart electorate.candidates.group(:gender).count %>
