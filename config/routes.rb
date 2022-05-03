@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :qualification_levels
   resources :unions
   resources :factions
-  resources :religions
+
   resources :parties
   resources :electorates
   resources :candidates

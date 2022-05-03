@@ -40,15 +40,26 @@ class GeneralPopulation
 
   def self.profession
     {
-      "Retail" => 35,
-      "Transport" => 35,
-      "Education" => 25,
-      "Construction" => 5,
-      "Manufacturing" => 5,
-      "Health" => 5,
-      "Law" => 5,
-      "Bankng and Finance" => 5,
+      "Professionals" => 18.0,
+      "Military" =>	1.0,
+      "Doctors" =>	1.0,
+      "Teachers"	=> 3.0,
+      "Journalists" =>	0.0,
+      "Managers" =>	13.0,
+      "Union Officals" =>	0.0,
+      "Political Staffers" =>	0.0,
+      "Community and personal service workers" =>	12.0,
+      "Lawyers" =>	1.0,
+      "Sales workers" =>	9.0,
+      "Union officials" =>	0,
+      "Farmer" =>	3.0,
+      "Unknown" =>	3.0,
+      "Technicians and trades workers"  => 12.0,
+      "Clerical and administrative workers"  => 14.0,
+      "Machinery operators and drivers"  => 6.0,
+      "Labourers" => 8.0
     }
+
   end
 
   def self.field_of_study
