@@ -2,57 +2,47 @@
 
 <h1>Professions</h1>
 
-<p>We found that the politicians have a very limited scope of profssional experience relative to the generql population they claim to represent. Weird!</p>
+<p>We have reliable data for the incumbent MPs, and have limited our data set here to those candidates. Data is from Australian Parliament House website</p>
 
   <div>
-    <h2>General Population by Profession</h2>
-    <%= pie_chart @genpop_professions %>
+    <h2>Legend</h2>
+      <div class="legend blue float-start float-lg-none">Male</div>
+      <div class="legend pink float-start float-lg-none">Female</div>
+      <div class="legend pink float-start float-lg-none">Female</div>
+      <div class="legend pink float-start float-lg-none">Female</div>
+      <div class="legend pink float-start float-lg-none">Female</div>
   </div>
   <div>
-    <h2>ALP by Profession</h2>
-    <%= pie_chart @alp_professions %>
+    <h2>General Population</h2>
+      <%= pie_chart(
+        @profession_data.genpop.count,
+        colors: @profession_data.genpop.colors,
+        # legend: false
+      ) %>
   </div>
   <div>
-    <h2>Liberals by Profession</h2>
-    <%= pie_chart @lib_professions %>
+    <h2>ALP MPs</h2>
+      <%= pie_chart(
+        @profession_data.alp.count,
+        colors: @profession_data.alp.colors,
+        # legend: false
+      ) %>
   </div>
   <div>
-    <h2>Nationals by Profession</h2>
-    <%= pie_chart @nat_professions %>
+    <h2>Liberal MPs</h2>
+      <%= pie_chart(
+        @profession_data.liberal.count,
+        colors: @profession_data.liberal.colors,
+        # legend: false
+      ) %>
+  </div>
+  <div>
+    <h2>National MPs</h2>
+      <%= pie_chart(
+        @profession_data.national.count,
+        colors: @profession_data.national.colors,
+        # legend: false
+      ) %>
   </div>
 
 
-
-<h1>Candidates</h1>
-
-
-<div id="candidates">
-  <table id="profession-candidate-table" class="table table-striped">
-    <thead>
-      <tr>
-        <th>Candidate</th>
-        <th>Party</th>
-        <th>Profession</th>
-      </tr>
-    </thead>
-    <% @candidates.each do |candidate| %>
-      <tr>
-        <td><%= safe_link_to(candidate) %></td>
-        <td><%= safe_link_to(candidate.party) %></td>
-        <td><%= safe_link_to(candidate.profession) %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    $('#profession-candidate-table').DataTable({
-      paging: false,
-      searching: false
-    });
-} );
-</script>

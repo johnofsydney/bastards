@@ -33,4 +33,20 @@ class Color
     }
   end
 
+  def self.profession_colors_hash
+    {
+      "Retail" => "red",
+      "Transport" =>	"blue",
+      "Education" =>	"green",
+      "Mining"	=> "yellow",
+      "Media" =>	"indigo",
+      "Law" =>	"cyan",
+      "Buddhism" =>	"pink",
+      "Hinduism" =>	"purple",
+      "Sikhism" =>	"teal",
+      "Judaism" =>	"orange",
+      "Unknown" =>	"gray"
+    }
+  end
+
 end

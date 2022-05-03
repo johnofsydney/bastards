@@ -12,6 +12,7 @@ class Candidate < ApplicationRecord
   belongs_to :field_of_study, optional: true
   belongs_to :profession, optional: true
 
+
   scope :alp, -> { joins(:party).where(party: { name: "Australian Labor Party" }) }
   scope :liberal, -> { joins(:party).where(party: { name: "Liberal Party of Australia" }) }
   scope :national, -> do
@@ -30,7 +31,10 @@ class Candidate < ApplicationRecord
       ]}
     )
   end
+
   scope :winnable, -> { where(margin: -2.0..Float::INFINITY) }
+  scope :incumbent, -> { where.not(year_first_elected: nil) }
+
 
   def age
     return 'Unknown' unless dob.present?

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :faqs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get 'genders' => 'genders#index'
   get 'home/search' => 'home#search'
 
   # Defines the root path route ("/")

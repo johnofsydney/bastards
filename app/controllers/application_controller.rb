@@ -1,5 +1,8 @@
 require 'data/general_population'
 
+require 'data/general_population'
+require 'data/color'
+
 class ApplicationController < ActionController::Base
 
 
