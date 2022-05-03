@@ -126,6 +126,21 @@ h2.group-header {
   &.yellow:before {
     background-color: yellow;
   }
+  &.indigo:before {
+    background-color: indigo;
+  }
+  &.cyan:before {
+    background-color: cyan;
+  }
+  &.teal:before {
+    background-color: teal;
+  }
+  &.orange:before {
+    background-color: orange;
+  }
+  &.gray:before {
+    background-color: gray;
+  }
 }
 
 //.legend.blue {

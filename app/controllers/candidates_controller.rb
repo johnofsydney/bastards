@@ -7,42 +7,19 @@ class CandidatesController < ApplicationController
   # GET /candidates or /candidates.json
   def index
     @candidates = Candidate.all
-    @genpop_religion = GeneralPopulation.religion
+
     @genpop_gender = GeneralPopulation.gender
 
-    @candidates_by_party_data = group_by_party(@candidates)
-    @candidates_by_gender_data = @candidates.group(:gender).count
-
-    @alp_candidates_by_gender_data = Candidate.alp.group(:gender).count
-    @coalition_candidates_by_gender_data = Candidate.coalition.group(:gender).count
+    # @candidates_by_gender_data = @candidates.group(:gender).count
 
 
+    # @gender_colors_for_genpop = set_colors(
+    #   @genpop_gender,
+    #   Color.gender_colors_hash
+    # )
 
 
-    @party_colors_for_candidates = set_colors(
-      @candidates_by_party_data,
-      Color.party_colors_hash
-    )
-
-    @gender_colors_for_genpop = set_colors(
-      @genpop_gender,
-      Color.gender_colors_hash
-    )
-
-    @gender_colors_for_candidates = set_colors(
-      @candidates_by_gender_data,
-      Color.gender_colors_hash
-    )
-
-    @gender_colors_for_alp_candidates = set_colors(
-      @alp_candidates_by_gender_data,
-      Color.gender_colors_hash
-    )
-
-    @gender_colors_for_coalition_candidates = set_colors(
-      @coalition_candidates_by_gender_data,
-      Color.gender_colors_hash
-    )
+    @gender_data = define_candidate_gender_data
   end
 
   # GET /candidates/1 or /candidates/1.json
@@ -55,5 +32,25 @@ class CandidatesController < ApplicationController
   def set_candidate
     @candidate = Candidate.find(params[:id])
   end
-end
 
+  def define_candidate_gender_data
+    gender_colors = Color.gender_colors_hash
+
+    genpop = pie_chart_struct(GeneralPopulation.gender, gender_colors)
+
+    all_candidates = OpenStruct.new(
+      all_seats: pie_chart_struct(Candidate.group(:gender).count, gender_colors),
+      winnable: pie_chart_struct(Candidate.winnable.group(:gender).count, gender_colors)
+    )
+    alp = OpenStruct.new(
+      all_seats: pie_chart_struct(Candidate.alp.group(:gender).count, gender_colors),
+      winnable: pie_chart_struct(Candidate.alp.winnable.group(:gender).count, gender_colors)
+    )
+    coalition = OpenStruct.new(
+      all_seats: pie_chart_struct(Candidate.coalition.group(:gender).count, gender_colors),
+      winnable: pie_chart_struct(Candidate.coalition.winnable.group(:gender).count, gender_colors)
+    )
+
+    OpenStruct.new(genpop: genpop, all_candidates: all_candidates, alp: alp, coalition: coalition)
+  end
+end

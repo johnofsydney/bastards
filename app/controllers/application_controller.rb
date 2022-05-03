@@ -47,11 +47,18 @@ class ApplicationController < ActionController::Base
   def set_colors(data, color_map)
     color_array = []
 
-    data.each do |score, _|
-      color_array << color_map[score]
+    data.each do |category, _|
+      color_array << color_map[category]
     end
 
     color_array
+  end
+
+  def pie_chart_struct(data_set, color_map)
+    OpenStruct.new(
+        count: data_set,
+        colors: set_colors(data_set, color_map)
+      )
   end
 end
 

@@ -23,13 +23,13 @@ class Color
       "Catholic" =>	"blue",
       "Anglican" =>	"green",
       "Other Christian"	=> "yellow",
-      "Other" =>	"brown",
+      "Other" =>	"indigo",
       "Islam" =>	"cyan",
       "Buddhism" =>	"pink",
       "Hinduism" =>	"purple",
-      "Sikhism" =>	"magenta",
+      "Sikhism" =>	"teal",
       "Judaism" =>	"orange",
-      "Unknown" =>	"magenta",
+      "Unknown" =>	"gray"
     }
   end
 

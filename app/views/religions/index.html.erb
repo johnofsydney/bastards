@@ -3,6 +3,20 @@
 <h1>Religions</h1>
 
   <div>
+    <h3>Legend</h3>
+      <div class="legend red float-start float-lg-none">No Religion</div>
+      <div class="legend blue float-start float-lg-none">Catholic</div>
+      <div class="legend green float-start float-lg-none">Anglican</div>
+      <div class="legend yellow float-start float-lg-none">Other Christian</div>
+      <div class="legend indigo float-start float-lg-none">Other</div>
+      <div class="legend cyan float-start float-lg-none">Islam</div>
+      <div class="legend pink float-start float-lg-none">Buddhism</div>
+      <div class="legend purple float-start float-lg-none">Hinduism</div>
+      <div class="legend teal float-start float-lg-none">Sikhism</div>
+      <div class="legend orange float-start float-lg-none">Judaism</div>
+      <div class="legend gray float-start float-lg-none">Unknown</div>
+  </div>
+  <div>
     <h3>General Population</h3>
     <%= pie_chart(
       @genpop_religions,
