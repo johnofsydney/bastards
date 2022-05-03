@@ -4,42 +4,53 @@
 
 <p>We have reliable data for the incumbent MPs, and have limited our data set here to those candidates. Data is from Australian Parliament House website</p>
 
-  <div id="legend">
-    <h2>Legend</h2>
-      <div class="legend red float-start float-lg-none">Professionals</div>
-      <div class="legend blue float-start float-lg-none">Military</div>
-      <div class="legend green float-start float-lg-none">Doctors</div>
-      <div class="legend yellow float-start float-lg-none">Teachers</div>
-      <div class="legend indigo float-start float-lg-none">Journalists</div>
 
 
-      <div class="legend cyan float-start float-lg-none">Managers</div>
-      <div class="legend pink float-start float-lg-none">Union Officials</div>
-      <div class="legend purple float-start float-lg-none">Political Staffers</div>
-      <div class="legend teal float-start float-lg-none">Community and personal service workers</div>
-      <div class="legend orange float-start float-lg-none">Lawyers</div>
-      <div class="legend maroon float-start float-lg-none">Sales workers</div>
 
-      <div class="legend lime float-start float-lg-none">Farmer</div>
-      <div class="legend gray float-start float-lg-none">Unknown</div>
-      <div class="legend aqua float-start float-lg-none">Technicians and trades workers</div>
-      <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
-      <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
-      <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
+<div class="flex-container row">
+  <div class="col">
+    <div id="legend">
+      <h2>Legend</h2>
+        <div class="legend red float-start float-lg-none">Professionals</div>
+        <div class="legend blue float-start float-lg-none">Military</div>
+        <div class="legend green float-start float-lg-none">Doctors</div>
+        <div class="legend yellow float-start float-lg-none">Teachers</div>
+        <div class="legend indigo float-start float-lg-none">Journalists</div>
+
+
+        <div class="legend cyan float-start float-lg-none">Managers</div>
+        <div class="legend pink float-start float-lg-none">Union Officials</div>
+        <div class="legend purple float-start float-lg-none">Political Staffers</div>
+        <div class="legend teal float-start float-lg-none">Community and personal service workers</div>
+        <div class="legend orange float-start float-lg-none">Lawyers</div>
+        <div class="legend maroon float-start float-lg-none">Sales workers</div>
+
+        <div class="legend lime float-start float-lg-none">Farmer</div>
+        <div class="legend gray float-start float-lg-none">Unknown</div>
+        <div class="legend aqua float-start float-lg-none">Technicians and trades workers</div>
+        <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
+        <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
+        <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
+    </div>
   </div>
-  <div id="chart">
-    <h2>General Population</h2>
+  <div class="col">
+    <div id="chart">
+      <h2>General Population</h2>
       <%= pie_chart(
         @profession_data.genpop.count,
         colors: @profession_data.genpop.colors,
         legend: false
       ) %>
+    </div>
   </div>
+  <div class="col">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
+  </div>
+</div>
 
 
-
-  
-  <div>
+<div class="flex-container row">
+  <div class="alp col">
     <h2>ALP MPs</h2>
       <%= pie_chart(
         @profession_data.alp.count,
@@ -47,7 +58,7 @@
         legend: false
       ) %>
   </div>
-  <div>
+  <div class="liberal col">
     <h2>Liberal MPs</h2>
       <%= pie_chart(
         @profession_data.liberal.count,
@@ -55,7 +66,7 @@
         legend: false
       ) %>
   </div>
-  <div>
+  <div class="national col">
     <h2>National MPs</h2>
       <%= pie_chart(
         @profession_data.national.count,
@@ -63,5 +74,10 @@
         legend: false
       ) %>
   </div>
+</div>
+
+
+
+
 
 

@@ -4,22 +4,57 @@
 
 <p>On average, our politicians are more well qualified relative to the population they represent.</p>
 
-<div>
-  <h2>General Population by Qualification Level</h2>
-  <%= pie_chart @genpop_qualification_levels %>
+<div class="flex-container row">
+  <div class="col">
+    <div class="legend"></div>
+      <div class="legend red float-start float-lg-none">Professionals</div>
+      <div class="legend blue float-start float-lg-none">Military</div>
+      <div class="legend green float-start float-lg-none">Doctors</div>
+      <div class="legend yellow float-start float-lg-none">Teachers</div>
+      <div class="legend indigo float-start float-lg-none">Journalists</div>
+
+
+      <div class="legend cyan float-start float-lg-none">Managers</div>
+      <div class="legend pink float-start float-lg-none">Union Officials</div>
+      <div class="legend purple float-start float-lg-none">Political Staffers</div>
+      <div class="legend teal float-start float-lg-none">Community and personal service workers</div>
+      <div class="legend orange float-start float-lg-none">Lawyers</div>
+      <div class="legend maroon float-start float-lg-none">Sales workers</div>
+
+      <div class="legend lime float-start float-lg-none">Farmer</div>
+      <div class="legend gray float-start float-lg-none">Unknown</div>
+      <div class="legend aqua float-start float-lg-none">Technicians and trades workers</div>
+      <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
+      <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
+      <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
+  </div>
+  <div class="col">
+    <div class="chart">
+      <h2>General Population by Qualification Level</h2>
+      <%= pie_chart @genpop_qualification_levels %>
+    </div>
+  </div>
+  <div class="col">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maxime ad architecto veniam eius, maiores laborum corporis quasi ut ea officia, saepe sit. Id harum consequatur nisi soluta deleniti architecto.
+  </div>
 </div>
-<div>
-  <h2>ALP by Qualification Level</h2>
-  <%= pie_chart @alp_qualification_levels %>
+
+
+<div class="flex-container row">
+  <div class="col">
+    <h2>ALP by Qualification Level</h2>
+    <%= pie_chart @alp_qualification_levels %>
+  </div>
+  <div class="col">
+    <h2>Liberals by Qualification Level</h2>
+    <%= pie_chart @lib_qualification_levels %>
+  </div>
+  <div class="col">
+    <h2>Nationals by Qualification Level</h2>
+    <%= pie_chart @nat_qualification_levels %>
+  </div>
 </div>
-<div>
-  <h2>Liberals by Qualification Level</h2>
-  <%= pie_chart @lib_qualification_levels %>
-</div>
-<div>
-  <h2>Nationals by Qualification Level</h2>
-  <%= pie_chart @nat_qualification_levels %>
-</div>
+
 
 
   <div id="qualification-level-candidates">
