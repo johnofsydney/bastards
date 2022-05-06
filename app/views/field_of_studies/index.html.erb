@@ -6,7 +6,7 @@
 
   <div>
     <h2>General Population by Field Of Study</h2>
-    <%= pie_chart @genpop_field_of_studies %>
+    <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
   </div>
   <div>
     <h2>ALP by Field Of Study</h2>
@@ -27,14 +27,12 @@
       <thead>
         <tr>
           <th>Candidate</th>
-          <th>Party</th>
           <th>Field Of Study</th>
         </tr>
       </thead>
       <% @candidates.each do |candidate| %>
         <tr>
           <td><%= safe_link_to(candidate) %></td>
-          <td><%= safe_link_to(candidate.party) %></td>
           <td><%= safe_link_to(candidate.field_of_study) %></td>
         </tr>
       <% end %>

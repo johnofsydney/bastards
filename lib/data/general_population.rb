@@ -1,8 +1,8 @@
 class GeneralPopulation
   def self.gender
     {
-      "Male" =>50,
-      "Female" =>50,
+      "Male" =>49,
+      "Female" =>51,
     }
   end
 
