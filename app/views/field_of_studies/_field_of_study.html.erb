@@ -7,14 +7,12 @@
         <tr>
           <th>Candidate</th>
           <th>Electorate</th>
-          <th>Party</th>
         </tr>
       </thead>
       <% field_of_study.candidates.each do |candidate| %>
         <tr>
           <td><%= safe_link_to(candidate) %></td>
           <td><%= safe_link_to(candidate.electorate) %></td>
-          <td><%= safe_link_to(candidate.party) %></td>
         </tr>
       <% end %>
     </table>

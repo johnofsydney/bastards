@@ -35,6 +35,7 @@ class Color
 
   def self.profession_colors_hash
     {
+      "Others" => "red",
       "Professionals" => "red",
       "Military" =>	"blue",
       "Doctors" =>	"green",
@@ -56,4 +57,13 @@ class Color
     }
   end
 
+  def self.qualification_level_colors_hash
+    {
+      "Postgraduate" => "red",
+      "Bachelor Degree" => "blue",
+      "Diploma" => "green",
+      "Up to Year 12 or Equiv" => "brown",
+      "Unknown" => "gray"
+    }
+  end
 end

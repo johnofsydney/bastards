@@ -5,13 +5,11 @@
       <thead>
         <tr>
           <th>Candidate</th>
-          <th>Party</th>
         </tr>
       </thead>
       <% electorate.candidates.each do |candidate| %>
         <tr>
           <td><%= safe_link_to(candidate) %></td>
-          <td><%= safe_link_to(candidate.party) %></td>
         </tr>
       <% end %>
     </table>

@@ -6,16 +6,12 @@
     <tr>
       <th>Candidate</th>
       <th>Electorate</th>
-      <th>Party</th>
-      <th class="d-none d-lg-table-cell">Profession</th>
     </tr>
     </thead>
     <% @candidates.each do |candidate| %>
       <tr>
         <td><%= safe_link_to(candidate) %></td>
         <td><%= safe_link_to(candidate.electorate) %></td>
-        <td><%= safe_link_to(candidate.party) %></td>
-        <td class="d-none d-lg-table-cell"><%= safe_link_to(candidate.profession) %></td>
       </tr>
     <% end %>
   </table>

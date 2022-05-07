@@ -1,8 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="container search-container">
+  <div id="search">
+    <%= render :partial => 'home/search_form' %>
+    <p>Search for any Candidate, Electorate, Party, Career, Religion, Education, Union or Faction </p>
+  </div>
+</div>
+
 <h1>Professions</h1>
 
 <p>We have reliable data for the incumbent MPs, and have limited our data set here to those candidates. Data is from Australian Parliament House website</p>
+<p>for the "Other category below, we have combined the following professions; "Managers", "Professionals", "Machinery operators and drivers", "Clerical and administrative workers", "Labourers"</p>
+<p>These categories represent 59% of the Australian Workforce, but less than 2% of the pool of candidates</p>
 
 
 
@@ -11,14 +20,15 @@
   <div class="col">
     <div id="legend">
       <h2>Legend</h2>
-        <div class="legend red float-start float-lg-none">Professionals</div>
+        <div class="legend red float-start float-lg-none">Other</div>
+
         <div class="legend blue float-start float-lg-none">Military</div>
         <div class="legend green float-start float-lg-none">Doctors</div>
         <div class="legend yellow float-start float-lg-none">Teachers</div>
         <div class="legend indigo float-start float-lg-none">Journalists</div>
 
 
-        <div class="legend cyan float-start float-lg-none">Managers</div>
+
         <div class="legend pink float-start float-lg-none">Union Officials</div>
         <div class="legend purple float-start float-lg-none">Political Staffers</div>
         <div class="legend teal float-start float-lg-none">Community and personal service workers</div>
@@ -27,10 +37,7 @@
 
         <div class="legend lime float-start float-lg-none">Farmer</div>
         <div class="legend gray float-start float-lg-none">Unknown</div>
-        <div class="legend aqua float-start float-lg-none">Technicians and trades workers</div>
-        <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
-        <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
-        <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
+
     </div>
   </div>
   <div class="col">
@@ -58,19 +65,11 @@
         legend: false
       ) %>
   </div>
-  <div class="liberal col">
-    <h2>Liberal MPs</h2>
+  <div class="coalition col">
+    <h2>Coalition MPs</h2>
       <%= pie_chart(
-        @profession_data.liberal.count,
-        colors: @profession_data.liberal.colors,
-        legend: false
-      ) %>
-  </div>
-  <div class="national col">
-    <h2>National MPs</h2>
-      <%= pie_chart(
-        @profession_data.national.count,
-        colors: @profession_data.national.colors,
+        @profession_data.coalition.count,
+        colors: @profession_data.coalition.colors,
         legend: false
       ) %>
   </div>

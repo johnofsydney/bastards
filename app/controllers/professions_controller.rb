@@ -3,13 +3,7 @@ class ProfessionsController < ApplicationController
 
   # GET /professions or /professions.json
   def index
-    # # first, the general population stats on religion
-    # @genpop_professions = GeneralPopulation.profession
 
-    # # then the religious breakdown of the major parties
-    # @alp_professions = group_by_profession(Candidate.alp)
-    # @lib_professions = group_by_profession(Candidate.liberal)
-    # @nat_professions = group_by_profession(Candidate.national)
 
     @profession_data = define_candidate_profession_data
 
@@ -37,7 +31,14 @@ class ProfessionsController < ApplicationController
     alp = pie_chart_struct(group_by_profession(Candidate.alp.incumbent), profession_colors)
     liberal = pie_chart_struct(group_by_profession(Candidate.liberal.incumbent), profession_colors)
     national = pie_chart_struct(group_by_profession(Candidate.national.incumbent), profession_colors)
+    coalition = pie_chart_struct(group_by_profession(Candidate.coalition.incumbent), profession_colors)
 
-    OpenStruct.new(genpop: genpop, alp: alp, liberal: liberal, national: national)
+    OpenStruct.new(
+      genpop: genpop,
+      alp: alp,
+      liberal: liberal,
+      national: national,
+      coalition: coalition,
+    )
   end
 end

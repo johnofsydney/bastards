@@ -1,5 +1,11 @@
 <h1>Genders</h1>
 
+<div class="container search-container">
+  <div id="search">
+    <%= render :partial => 'home/search_form' %>
+    <p>Search for any Candidate, Electorate, Party, Career, Religion, Education, Union or Faction </p>
+  </div>
+</div>
 
 <div class="flex-container gender row">
   <h2 class="col-lg-12">Gender</h2>
@@ -25,10 +31,9 @@
     ) %>
   </div>
   <div class="col-lg-4">
-    <h3>why are they so male?</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est maiores explicabo voluptatibus deleniti unde non
-      pariatur quod fugit numquam atque dignissimos culpa sapiente saepe necessitatibus repudiandae id architecto,
-      tempore sunt.</p>
+    <h3>PRESS RELEASE</h3>
+    <p>A link goes here</p>
+    <p>And / Or the whole press release</p>
   </div>
 </div>
 
@@ -65,6 +70,64 @@
     <%= pie_chart(
       @gender_data.coalition.winnable.count,
       colors: @gender_data.coalition.winnable.colors,
+      legend: false
+    ) %>
+  </div>
+</div>
+
+<div class="flex-container gender row">
+  <div class="col-lg-3">
+    <h3>Labor Candidates in safe seats</h3>
+    <%= pie_chart(
+      @gender_data.alp.safe.count,
+      colors: @gender_data.alp.safe.colors,
+      legend: false
+    ) %>
+  </div>
+  <div class="col-lg-3">
+    <h3>Coalition Candidates in safe seats</h3>
+    <%= pie_chart(
+      @gender_data.coalition.safe.count,
+      colors: @gender_data.coalition.safe.colors,
+      legend: false
+    ) %>
+  </div>
+</div>
+
+<div class="flex-container gender row">
+  <div class="col-lg-3">
+    <h3>Labor Candidates in Senate</h3>
+    <%= pie_chart(
+      @gender_data.alp.senate.count,
+      colors: @gender_data.alp.senate.colors,
+      legend: false,
+      suffix: "%"
+    ) %>
+  </div>
+  <div class="col-lg-3">
+    <h3>Coalition Candidates in Senate</h3>
+    <%= pie_chart(
+      @gender_data.coalition.senate.count,
+      colors: @gender_data.coalition.senate.colors,
+      legend: false
+    ) %>
+  </div>
+</div>
+
+<div class="flex-container gender row">
+  <div class="col-lg-3">
+    <h3>Labor Candidates in Lower House</h3>
+    <%= pie_chart(
+      @gender_data.alp.lower_house.count,
+      colors: @gender_data.alp.lower_house.colors,
+      legend: false
+    ) %>
+  </div>
+  <div class="col-lg-3">
+    <h3>Coalition Candidates in Lower House</h3>
+    <%= pie_chart(
+      @gender_data.coalition.lower_house.count,
+      colors: @gender_data.coalition.lower_house.colors,
       legend: false
     ) %>
   </div>

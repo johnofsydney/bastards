@@ -1,80 +1,61 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="container search-container">
+  <div id="search">
+    <%= render :partial => 'home/search_form' %>
+    <p>Search for any Candidate, Electorate, Party, Career, Religion, Education, Union or Faction </p>
+  </div>
+</div>
+
 <h1>Qualification levels</h1>
 
-<p>On average, our politicians are more well qualified relative to the population they represent.</p>
+
 
 <div class="flex-container row">
   <div class="col">
-    <div class="legend"></div>
-      <div class="legend red float-start float-lg-none">Professionals</div>
-      <div class="legend blue float-start float-lg-none">Military</div>
-      <div class="legend green float-start float-lg-none">Doctors</div>
-      <div class="legend yellow float-start float-lg-none">Teachers</div>
-      <div class="legend indigo float-start float-lg-none">Journalists</div>
+    <div id="legend">
+      <h2>Legend</h2>
+        <div class="legend red float-start float-lg-none">Postgraduate</div>
 
-
-      <div class="legend cyan float-start float-lg-none">Managers</div>
-      <div class="legend pink float-start float-lg-none">Union Officials</div>
-      <div class="legend purple float-start float-lg-none">Political Staffers</div>
-      <div class="legend teal float-start float-lg-none">Community and personal service workers</div>
-      <div class="legend orange float-start float-lg-none">Lawyers</div>
-      <div class="legend maroon float-start float-lg-none">Sales workers</div>
-
-      <div class="legend lime float-start float-lg-none">Farmer</div>
-      <div class="legend gray float-start float-lg-none">Unknown</div>
-      <div class="legend aqua float-start float-lg-none">Technicians and trades workers</div>
-      <div class="legend cadetblue float-start float-lg-none">Clerical and administrative workers</div>
-      <div class="legend coral float-start float-lg-none">Machinery operators and drivers</div>
-      <div class="legend darkmagenta float-start float-lg-none">Labourers</div>
-  </div>
-  <div class="col">
-    <div class="chart">
-      <h2>General Population by Qualification Level</h2>
-      <%= pie_chart @genpop_qualification_levels %>
+        <div class="legend blue float-start float-lg-none">Bachelor Degree</div>
+        <div class="legend green float-start float-lg-none">Diploma</div>
+        <div class="legend brown float-start float-lg-none">Up to Year 12 or Equiv</div>
     </div>
   </div>
   <div class="col">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maxime ad architecto veniam eius, maiores laborum corporis quasi ut ea officia, saepe sit. Id harum consequatur nisi soluta deleniti architecto.
+    <div id="chart">
+      <h2>General Population</h2>
+      <%= pie_chart(
+        @qualification_level_data.genpop.count,
+        colors: @qualification_level_data.genpop.colors,
+        legend: false
+      ) %>
+    </div>
+  </div>
+  <div class="col">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
   </div>
 </div>
 
 
 <div class="flex-container row">
-  <div class="col">
-    <h2>ALP by Qualification Level</h2>
-    <%= pie_chart @alp_qualification_levels %>
+  <div class="alp col">
+    <h2>ALP MPs</h2>
+      <%= pie_chart(
+        @qualification_level_data.alp.count,
+        colors: @qualification_level_data.alp.colors,
+        legend: false
+      ) %>
   </div>
-  <div class="col">
-    <h2>Liberals by Qualification Level</h2>
-    <%= pie_chart @lib_qualification_levels %>
-  </div>
-  <div class="col">
-    <h2>Nationals by Qualification Level</h2>
-    <%= pie_chart @nat_qualification_levels %>
+  <div class="coalition col">
+    <h2>Coalition MPs</h2>
+      <%= pie_chart(
+        @qualification_level_data.coalition.count,
+        colors: @qualification_level_data.coalition.colors,
+        legend: false
+      ) %>
   </div>
 </div>
-
-
-
-  <div id="qualification-level-candidates">
-    <table id="qualification-level-candidate-table" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Candidate</th>
-          <th>Party</th>
-          <th>Qualification Level</th>
-        </tr>
-      </thead>
-      <% @candidates.each do |candidate| %>
-        <tr>
-          <td><%= safe_link_to(candidate) %></td>
-          <td><%= safe_link_to(candidate.party) %></td>
-          <td><%= safe_link_to(candidate.qualification_level) %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
