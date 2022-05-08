@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
   end
 
   def detach_category(categories, category)
-    return 0.0 unless categories[category].present?
+    return 0 unless categories[category].present?
 
-    categories.delete(category).to_f
+    categories.delete(category)
   end
 
   def group_by_qualification_level(set)

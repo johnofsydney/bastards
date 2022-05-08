@@ -42,9 +42,9 @@ candidate_data.each do |candidate|
     faction: Faction.find_or_create_by(name: candidate["Faction"]),
     union: Union.find_or_create_or_nil(name: candidate["Union"]),
     religion: Religion.find_or_create_or_unknown(name: candidate["Religion"]),
-    profession: Profession.find_or_create_by(name: candidate["Predominant Career"]),
+    profession: Profession.find_or_create_or_nil(name: candidate["Prior Career"]),
     qualification_level: QualificationLevel.find_or_create_by(name: candidate["Qualification Level"]),
-    field_of_study: FieldOfStudy.find_or_create_by(name: candidate["Qualifications Field"]),
+    field_of_study: FieldOfStudy.find_or_create_by(name: candidate["Qualification Field Category"]),
     dob: date_parser(candidate['DOB']),
     year_first_elected: year_first_elected == 0 ? nil : year_first_elected,
     margin: margin == 0.0 ? nil : margin

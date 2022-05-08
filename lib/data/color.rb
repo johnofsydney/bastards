@@ -53,7 +53,8 @@ class Color
       "Technicians and trades workers"  => "aqua",
       "Clerical and administrative workers"  => "cadetblue",
       "Machinery operators and drivers"  => "coral",
-      "Labourers" => "darkmagenta"
+      "Labourers" => "darkmagenta",
+
     }
   end
 

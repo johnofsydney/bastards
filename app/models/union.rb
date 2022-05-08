@@ -5,7 +5,7 @@ class Union < ApplicationRecord
   has_many :candidates
 
   def self.find_or_create_or_nil(name: name_from_sheet)
-    return nil if name == 'n/a'
+    return nil unless name.present?
 
     find_or_create_by(name: name)
   end

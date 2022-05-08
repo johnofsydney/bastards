@@ -1,7 +1,7 @@
 class Ingestor
   attr_reader :headings, :data
 
-  WHITELIST = ["Name", "Gender", "Party", "Seat", "State", "Faction", "Union", "Religion", "DOB", "Predominant Career", "Qualification Level", "Qualifications Field", "Year first elected", "Margin"]
+  WHITELIST = ["Name", "Gender", "Party", "Seat", "State", "Faction", "Union", "Religion", "DOB", "Prior Career", "Qualification Level", "Qualification Field Category", "Year first elected", "Margin"]
 
   def initialize
     csv_file = File.open("sheet_data/Pollies_data.csv", "r")
