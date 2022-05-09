@@ -3,20 +3,6 @@ class QualificationLevelsController < ApplicationController
 
   # GET /qualification_levels or /qualification_levels.json
   def index
-    # # Qualification Level
-    # # first, the general population stats on religion
-    # @genpop_qualification_levels = GeneralPopulation.qualification_level
-
-    # # then the religious breakdown of the major parties
-    # @alp_qualification_levels = group_by_qualification_level(Candidate.alp)
-    # @lib_qualification_levels = group_by_qualification_level(Candidate.liberal)
-    # @nat_qualification_levels = group_by_qualification_level(Candidate.national)
-
-    # # finally the list of all religions
-
-
-
-
     @qualification_level_data = define_candidate_qualification_level_data
 
     @qualification_levels = QualificationLevel.all
