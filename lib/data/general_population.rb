@@ -60,7 +60,4 @@ class GeneralPopulation
       "Engineering" => 5,
     }
   end
-
-
-
 end
