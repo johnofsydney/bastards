@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :candidates
   resources :about
   resources :faqs
+  resources :disclaimer
+  resources :privacy
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get 'genders' => 'genders#index'
