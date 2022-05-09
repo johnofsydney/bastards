@@ -3,16 +3,11 @@
 <div class="container search-container">
   <div id="search">
     <%= render :partial => 'home/search_form' %>
-    <p>Search for any Candidate, Electorate, Party, Prior Career, Education, Union or Faction </p>
+    <p>Search for any Candidate, Electorate, Party, Prior Career, Education or Union </p>
   </div>
 </div>
 
 <div class="flex-container gender row">
-  <div class="row">
-    <h3>Legend</h3>
-      <div class="legend blue float-start float-lg-none">Male</div>
-      <div class="legend pink float-start float-lg-none">Female</div>
-  </div>
   <div class="col-lg-3">
     <h3>All Candidates</h3>
     <%= pie_chart(

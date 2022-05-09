@@ -3,23 +3,20 @@
 <div class="container search-container">
   <div id="search">
     <%= render :partial => 'home/search_form' %>
-    <p>Search for any Candidate, Electorate, Party, Prior Career, Education, Union or Faction </p>
+    <p>Search for any Candidate, Electorate, Party, Prior Career, Education or Union </p>
   </div>
 </div>
 
-<h1>Qualification levels</h1>
-
-
-
+<h1>Education level</h1>
+<p>Incumbent MPs and Senators who are running for re-election.</p>
 <div class="flex-container row">
-  <div class="col">
+  <div class="row">
     <div id="legend">
       <h2>Legend</h2>
-        <div class="legend red float-start float-lg-none">Postgraduate</div>
-
-        <div class="legend blue float-start float-lg-none">Bachelor Degree</div>
-        <div class="legend green float-start float-lg-none">Diploma</div>
-        <div class="legend brown float-start float-lg-none">Up to Year 12 or Equiv</div>
+        <div class="legend red float-start">Postgraduate</div>
+        <div class="legend blue float-start">Bachelor Degree</div>
+        <div class="legend green float-start">Diploma</div>
+        <div class="legend brown float-start">Up to Year 12 or Equiv</div>
     </div>
   </div>
   <div class="col">
@@ -32,15 +29,12 @@
       ) %>
     </div>
   </div>
-  <div class="col">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
-  </div>
 </div>
 
 
 <div class="flex-container row">
   <div class="alp col">
-    <h2>ALP MPs</h2>
+    <h2>ALP</h2>
       <%= pie_chart(
         @qualification_level_data.alp.count,
         colors: @qualification_level_data.alp.colors,
@@ -48,7 +42,7 @@
       ) %>
   </div>
   <div class="coalition col">
-    <h2>Coalition MPs</h2>
+    <h2>Coalition</h2>
       <%= pie_chart(
         @qualification_level_data.coalition.count,
         colors: @qualification_level_data.coalition.colors,

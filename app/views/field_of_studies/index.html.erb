@@ -3,28 +3,27 @@
 <div class="container search-container">
   <div id="search">
     <%= render :partial => 'home/search_form' %>
-    <p>Search for any Candidate, Electorate, Party, Prior Career, Education, Union or Faction </p>
+    <p>Search for any Candidate, Electorate, Party, Prior Career, Education or Union </p>
   </div>
 </div>
 
-<h1>Field of study</h1>
-
-<p>Focussing only on Tertiary and further studies, we discovered that the politicians standing for election had focussed their studies on a narrow selection of educational oppotunities relative to the population at large</p>
+<h1>Field of Study</h1>
+<p>Incumbent MPs and Senators who are running for re-election.</p>
 
   <div>
-    <h2>General Population by Field Of Study</h2>
+    <h2>General Population</h2>
     <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
   </div>
   <div>
-    <h2>ALP by Field Of Study</h2>
+    <h2>ALP</h2>
     <%= pie_chart @alp_field_of_studies %>
   </div>
   <div>
-    <h2>Liberals by Field Of Study</h2>
+    <h2>Liberals</h2>
     <%= pie_chart @lib_field_of_studies %>
   </div>
   <div>
-    <h2>Nationals by Field Of Study</h2>
+    <h2>Nationals</h2>
     <%= pie_chart @nat_field_of_studies %>
   </div>
 
