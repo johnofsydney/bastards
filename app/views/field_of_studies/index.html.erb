@@ -10,50 +10,33 @@
 <h1>Field of Study</h1>
 <p>Incumbent MPs and Senators who are running for re-election.</p>
 
-  <div>
-    <h2>General Population</h2>
-    <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
-  </div>
-  <div>
-    <h2>ALP</h2>
-    <%= pie_chart @alp_field_of_studies %>
-  </div>
-  <div>
-    <h2>Liberals</h2>
-    <%= pie_chart @lib_field_of_studies %>
-  </div>
-  <div>
-    <h2>Nationals</h2>
-    <%= pie_chart @nat_field_of_studies %>
-  </div>
+<div>
+  <h2>General Population</h2>
+  <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
+</div>
+<div>
+  <h2>ALP</h2>
+  <%= pie_chart @alp_field_of_studies %>
+</div>
+<div>
+  <h2>Liberals</h2>
+  <%= pie_chart @lib_field_of_studies %>
+</div>
+<div>
+  <h2>Nationals</h2>
+  <%= pie_chart @nat_field_of_studies %>
+</div>
 
-
-  <div id="field-of-study-candidates">
-    <table id="field-of-study-candidate-table" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Candidate</th>
-          <th>Field Of Study</th>
-        </tr>
-      </thead>
-      <% @candidates.each do |candidate| %>
-        <tr>
-          <td><%= safe_link_to(candidate) %></td>
-          <td><%= safe_link_to(candidate.field_of_study) %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#field-of-study-candidate-table').DataTable({
-      paging: false,
-      searching: false
+    $(document).ready(function () {
+        $('#field-of-study-candidate-table').DataTable({
+            paging: false,
+            searching: false
+        });
     });
-} );
 </script>
