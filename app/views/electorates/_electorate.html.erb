@@ -15,24 +15,9 @@
     </table>
   </div>
 
-
-  <h3>grouped by Gender</h3>
-  <%= pie_chart electorate.candidates.group(:gender).count %>
-
-
-  <h3>grouped by Profession</h3>
-  <%= pie_chart electorate.candidates.joins(:profession).group(:profession).count.map{ |k, v| [k.name, v] }.to_h %>
-
-
-
-
-
   <p>
     <%= link_to "AEC information for #{electorate.name}", electorate.link %>
   </p>
-
-
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

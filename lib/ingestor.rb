@@ -1,12 +1,12 @@
 class Ingestor
   attr_reader :headings, :data
 
-  WHITELIST = ["Name", "Gender", "Party", "Seat", "State", "Faction", "Union", "Religion", "DOB", "Prior Career", "Qualification Level", "Qualification Field Category", "Year first elected", "Margin"]
+  WHITELIST = ["Name", "Gender", "Party", "Seat", "State", "Faction", "Union", "Religion", "DOB", "Prior Career", "Qualification Level", "Qualification Field Category", "Year first elected", "Margin", "Winnability"]
 
   def initialize
     csv_file = File.open("sheet_data/Pollies_data.csv", "r")
     lines = csv_file.readlines
-    lines.shift(4) # remove top two lines and let them disappear
+    lines.shift(5) # remove top five lines and let them disappear
 
     @headings = lines.shift.chomp.split(',').map{ |element| trim_element(element) }
     @data = lines.map{|line| line.chomp.split(',') }.map{|line| trim_all_elements(line) }

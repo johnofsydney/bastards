@@ -34,30 +34,43 @@ class GeneralPopulation
 
   def self.profession
     {
-      "Others" => 59.0, # (13.0 + 18.0 + 6.0 + 14.0 + 8.0)
-      "Military" =>	1.0,
       "Doctors" =>	1.0,
-      "Teachers"	=> 3.0,
-      "Journalists" =>	0.0,
-      "Union Officals" =>	0.0,
-      "Political Staffers" =>	0.0,
-      "Community and personal service workers" =>	12.0,
-      "Lawyers" =>	1.0,
-      "Sales workers" =>	9.0,
-      "Union officials" =>	0,
       "Farmer" =>	3.0,
-      "Unknown" =>	3.0,
-      "Technicians and trades workers"  => 12.0,
+      "Journalists" =>	0.0,
+      "Lawyers" =>	1.0,
+      "Miltiary" =>	1.0,
+      "Other" =>	92.0,
+      "Political" =>	0.0,
+      "Teachers" =>	3.0,
+      "Union Officials" =>	0.0
     }
   end
 
   def self.field_of_study
     {
-      "Arts" => 35,
-      "Science" => 35,
-      "Medicine" => 25,
-      "Law" => 5,
-      "Engineering" => 5,
+      "Natural and Physical Sciences" => 4.0,
+      "Information Technology" => 4.0,
+      "Engineering and Related Technologies" => 15.0,
+      "Architecture and Building" => 6.0,
+      "Agriculture, Environmental and Related Studies" => 2.0,
+      "Health" => 10.0,
+      "Education" => 7.0,
+      "Management and Commerce" => 25.0,
+      "Society and Culture (incl Law)" => 16.0,
+      "Creative Arts" => 5.0,
+      "Food, Hospitality and Personal Services" => 6.0,
     }
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+

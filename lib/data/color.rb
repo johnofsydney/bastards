@@ -67,4 +67,21 @@ class Color
       "Unknown" => "gray"
     }
   end
+
+  def self.field_of_study_colors_hash
+    {
+      "Natural and Physical Sciences" => "red",
+      "Information Technology" => "blue",
+      "Engineering and Related Technologies" => "orange",
+      "Architecture and Building" => "green",
+      "Agriculture, Environmental and Related Studies" => "cyan",
+      "Health" => "pink",
+      "Education" => "purple",
+      "Management and Commerce" => "magenta",
+      "Society and Culture (incl Law)" => "darkmagenta",
+      "Creative Arts" => "lime",
+      "Food, Hospitality and Personal Services" => "cadetblue",
+      "n/a" => "gray"
+    }
+  end
 end

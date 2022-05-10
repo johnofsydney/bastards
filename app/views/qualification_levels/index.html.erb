@@ -3,11 +3,11 @@
 <div class="container search-container">
   <div id="search">
     <%= render :partial => 'home/search_form' %>
-    <p>Search for any Candidate, Electorate, Party, Career, Religion, Education, Union or Faction </p>
   </div>
 </div>
 
-<h1>Qualification levels</h1>
+<h1>Education Level</h1>
+<h2>Incumbent MPs and Senators who are running for re-election</h2>
 
 
 
@@ -16,7 +16,6 @@
     <div id="legend">
       <h2>Legend</h2>
         <div class="legend red float-start float-lg-none">Postgraduate</div>
-
         <div class="legend blue float-start float-lg-none">Bachelor Degree</div>
         <div class="legend green float-start float-lg-none">Diploma</div>
         <div class="legend brown float-start float-lg-none">Up to Year 12 or Equiv</div>
@@ -40,7 +39,7 @@
 
 <div class="flex-container row">
   <div class="alp col">
-    <h2>ALP MPs</h2>
+    <h2>ALP</h2>
       <%= pie_chart(
         @qualification_level_data.alp.count,
         colors: @qualification_level_data.alp.colors,
@@ -48,7 +47,7 @@
       ) %>
   </div>
   <div class="coalition col">
-    <h2>Coalition MPs</h2>
+    <h2>Coalition</h2>
       <%= pie_chart(
         @qualification_level_data.coalition.count,
         colors: @qualification_level_data.coalition.colors,

@@ -3,58 +3,57 @@
 <div class="container search-container">
   <div id="search">
     <%= render :partial => 'home/search_form' %>
-    <p>Search for any Candidate, Electorate, Party, Career, Religion, Education, Union or Faction </p>
   </div>
 </div>
 
-<h1>Field of study</h1>
 
-<p>Focussing only on Tertiary and further studies, we discovered that the politicians standing for election had focussed their studies on a narrow selection of educational oppotunities relative to the population at large</p>
+<h1>Field Of Study</h1>
+<h2>Incumbent MPs and Senators who are running for re-election</h2>
 
-  <div>
-    <h2>General Population by Field Of Study</h2>
-    <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
+
+
+<div class="flex-container row">
+  <div class="col">
+    <div id="legend">
+      <h2>Legend</h2>
+        <div class="legend red float-start float-lg-none">Postgraduate</div>
+        <div class="legend blue float-start float-lg-none">Bachelor Degree</div>
+        <div class="legend green float-start float-lg-none">Diploma</div>
+        <div class="legend brown float-start float-lg-none">Up to Year 12 or Equiv</div>
+    </div>
   </div>
-  <div>
-    <h2>ALP by Field Of Study</h2>
-    <%= pie_chart @alp_field_of_studies %>
+  <div class="col">
+    <div id="chart">
+      <h2>General Population</h2>
+      <%= pie_chart(
+        @field_of_study_data.genpop.count,
+        colors: @field_of_study_data.genpop.colors,
+        legend: false,
+        is3d: true
+      ) %>
+    </div>
   </div>
-  <div>
-    <h2>Liberals by Field Of Study</h2>
-    <%= pie_chart @lib_field_of_studies %>
+  <div class="col">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
   </div>
-  <div>
-    <h2>Nationals by Field Of Study</h2>
-    <%= pie_chart @nat_field_of_studies %>
+</div>
+
+
+<div class="flex-container row">
+  <div class="alp col">
+    <h2>ALP</h2>
+      <%= pie_chart(
+        @field_of_study_data.alp.count,
+        colors: @field_of_study_data.alp.colors,
+        legend: false
+      ) %>
   </div>
-
-
-  <div id="field-of-study-candidates">
-    <table id="field-of-study-candidate-table" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Candidate</th>
-          <th>Field Of Study</th>
-        </tr>
-      </thead>
-      <% @candidates.each do |candidate| %>
-        <tr>
-          <td><%= safe_link_to(candidate) %></td>
-          <td><%= safe_link_to(candidate.field_of_study) %></td>
-        </tr>
-      <% end %>
-    </table>
+  <div class="coalition col">
+    <h2>Coalition</h2>
+      <%= pie_chart(
+        @field_of_study_data.coalition.count,
+        colors: @field_of_study_data.coalition.colors,
+        legend: false
+      ) %>
   </div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    $('#field-of-study-candidate-table').DataTable({
-      paging: false,
-      searching: false
-    });
-} );
-</script>
+</div>

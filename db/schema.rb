@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_01_031346) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_09_105658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_01_031346) do
     t.bigint "profession_id"
     t.integer "year_first_elected"
     t.float "margin"
+    t.text "winnability"
     t.index ["electorate_id"], name: "index_candidates_on_electorate_id"
     t.index ["faction_id"], name: "index_candidates_on_faction_id"
     t.index ["field_of_study_id"], name: "index_candidates_on_field_of_study_id"
