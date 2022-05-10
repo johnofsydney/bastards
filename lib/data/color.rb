@@ -35,26 +35,10 @@ class Color
 
   def self.profession_colors_hash
     {
-      "Others" => "red",
-      "Professionals" => "red",
-      "Military" =>	"blue",
-      "Doctors" =>	"green",
-      "Teachers"	=> "yellow",
-      "Journalists" =>	"indigo",
-      "Managers" =>	"cyan",
-      "Union Officials" =>	"pink",
-      "Political Staffers" =>	"purple",
-      "Community and personal service workers" =>	"teal",
-      "Lawyers" =>	"orange",
-      "Sales workers" =>	"maroon",
-      "Union officials" =>	"olive",
-      "Farmer" =>	"lime",
-      "Unknown" =>	"gray",
-      "Technicians and trades workers"  => "aqua",
-      "Clerical and administrative workers"  => "cadetblue",
-      "Machinery operators and drivers"  => "coral",
-      "Labourers" => "darkmagenta",
-
+      "Lawyers" => "orange",
+      "Other" =>	"red",
+      "Political" =>	"purple",
+      "Unions" =>	"pink",
     }
   end
 

@@ -34,15 +34,10 @@ class GeneralPopulation
 
   def self.profession
     {
-      "Doctors" =>	1.0,
-      "Farmer" =>	3.0,
-      "Journalists" =>	0.0,
-      "Lawyers" =>	1.0,
-      "Miltiary" =>	1.0,
-      "Other" =>	92.0,
+      "Lawyers" => 1.0,
+      "Other" =>	99.0,
       "Political" =>	0.0,
-      "Teachers" =>	3.0,
-      "Union Officials" =>	0.0
+      "Unions" =>	0.0,
     }
   end
 
