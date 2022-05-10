@@ -8,7 +8,7 @@
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>All Candidates</h3>
     <%= pie_chart(
       @gender_data.all_candidates.all_seats.count,
@@ -16,7 +16,7 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>General Population</h3>
     <%= pie_chart(
       @gender_data.genpop.count,
@@ -24,15 +24,10 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-4">
-    <h3>PRESS RELEASE</h3>
-    <p>A link goes here</p>
-    <p>And / Or the whole press release</p>
-  </div>
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Labor Candidates</h3>
     <%= pie_chart(
       @gender_data.alp.all_seats.count,
@@ -40,7 +35,7 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Coalition Candidates</h3>
     <%= pie_chart(
       @gender_data.coalition.all_seats.count,
@@ -51,7 +46,7 @@
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Labor Candidates in winnable seats</h3>
     <%= pie_chart(
       @gender_data.alp.winnable.count,
@@ -59,7 +54,7 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Coalition Candidates in winnable seats</h3>
     <%= pie_chart(
       @gender_data.coalition.winnable.count,
@@ -70,7 +65,7 @@
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Labor Candidates in safe seats</h3>
     <%= pie_chart(
       @gender_data.alp.safe.count,
@@ -78,7 +73,7 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Coalition Candidates in safe seats</h3>
     <%= pie_chart(
       @gender_data.coalition.safe.count,
@@ -89,7 +84,7 @@
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Labor Candidates in Senate</h3>
     <%= pie_chart(
       @gender_data.alp.senate.count,
@@ -98,7 +93,7 @@
       suffix: "%"
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Coalition Candidates in Senate</h3>
     <%= pie_chart(
       @gender_data.coalition.senate.count,
@@ -109,7 +104,7 @@
 </div>
 
 <div class="flex-container gender row">
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Labor Candidates in Lower House</h3>
     <%= pie_chart(
       @gender_data.alp.lower_house.count,
@@ -117,7 +112,7 @@
       legend: false
     ) %>
   </div>
-  <div class="col-lg-3">
+  <div class="col">
     <h3>Coalition Candidates in Lower House</h3>
     <%= pie_chart(
       @gender_data.coalition.lower_house.count,
