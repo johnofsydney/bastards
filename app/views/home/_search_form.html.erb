@@ -1,8 +1,9 @@
 <%= form_for :query, class: 'search-form', url: "home/search", method: :get do |form| %>
   <div class="input-group">
     <div class="form-outline">
-  <%= form.text_field :search_terms , class: 'form-control rounded input-search'%>
-  <%= form.submit 'Search', class: 'input-search-button btn-primary rounded' %>
+      <%= form.text_field :search_terms , class: 'form-control rounded input-search'%>
+      <%= form.submit 'Search', class: 'input-search-button btn-primary rounded' %>
     </div>
+    <p>Search for any Candidate, Electorate, Prior Career or Education</p>
   </div>
 <% end  %>

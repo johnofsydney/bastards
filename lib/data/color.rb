@@ -35,26 +35,10 @@ class Color
 
   def self.profession_colors_hash
     {
-      "Others" => "red",
-      "Professionals" => "red",
-      "Military" =>	"blue",
-      "Doctors" =>	"green",
-      "Teachers"	=> "yellow",
-      "Journalists" =>	"indigo",
-      "Managers" =>	"cyan",
-      "Union Officials" =>	"pink",
-      "Political Staffers" =>	"purple",
-      "Community and personal service workers" =>	"teal",
-      "Lawyers" =>	"orange",
-      "Sales workers" =>	"maroon",
-      "Union officials" =>	"olive",
-      "Farmer" =>	"lime",
-      "Unknown" =>	"gray",
-      "Technicians and trades workers"  => "aqua",
-      "Clerical and administrative workers"  => "cadetblue",
-      "Machinery operators and drivers"  => "coral",
-      "Labourers" => "darkmagenta",
-
+      "Lawyers" => "orange",
+      "Other" =>	"red",
+      "Political" =>	"purple",
+      "Unions" =>	"pink",
     }
   end
 
@@ -65,6 +49,23 @@ class Color
       "Diploma" => "green",
       "Up to Year 12 or Equiv" => "brown",
       "Unknown" => "gray"
+    }
+  end
+
+  def self.field_of_study_colors_hash
+    {
+      "Natural and Physical Sciences" => "red",
+      "Information Technology" => "blue",
+      "Engineering and Related Technologies" => "orange",
+      "Architecture and Building" => "green",
+      "Agriculture, Environmental and Related Studies" => "cyan",
+      "Health" => "pink",
+      "Education" => "purple",
+      "Management and Commerce" => "magenta",
+      "Society and Culture (incl Law)" => "darkmagenta",
+      "Creative Arts" => "lime",
+      "Food, Hospitality and Personal Services" => "cadetblue",
+      "n/a" => "gray"
     }
   end
 end

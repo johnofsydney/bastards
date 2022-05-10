@@ -37,6 +37,7 @@ candidate_data.each do |candidate|
     name: candidate["Name"],
     state: candidate["State"],
     gender: candidate["Gender"],
+    winnability: candidate["Winnability"],
     party: Party.find_or_create_by(name: candidate["Party"]),
     electorate: Electorate.find_or_create_by(name: candidate["Seat"]),
     faction: Faction.find_or_create_by(name: candidate["Faction"]),
@@ -44,7 +45,7 @@ candidate_data.each do |candidate|
     religion: Religion.find_or_create_or_unknown(name: candidate["Religion"]),
     profession: Profession.find_or_create_or_nil(name: candidate["Prior Career"]),
     qualification_level: QualificationLevel.find_or_create_by(name: candidate["Qualification Level"]),
-    field_of_study: FieldOfStudy.find_or_create_by(name: candidate["Qualification Field Category"]),
+    field_of_study: FieldOfStudy.find_or_create_or_nil(name: candidate["Qualification Field Category"]),
     dob: date_parser(candidate['DOB']),
     year_first_elected: year_first_elected == 0 ? nil : year_first_elected,
     margin: margin == 0.0 ? nil : margin

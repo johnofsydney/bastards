@@ -7,9 +7,6 @@
   </div>
 </div>
 
-<h1>Field of Study</h1>
-<p>Incumbent MPs and Senators who are running for re-election.</p>
-
 <div>
   <h2>General Population</h2>
   <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
@@ -40,3 +37,61 @@
         });
     });
 </script>
+=======
+<h1>Field Of Study</h1>
+<h2>Incumbent MPs and Senators who are running for re-election</h2>
+
+
+
+<div class="flex-container row">
+  <div class="row">
+    <div id="legend">
+      <h2>Legend</h2>
+        <div class="legend red float-start">Natural and Physical Sciences</div>
+        <div class="legend blue float-start">Information Technology</div>
+        <div class="legend green float-start">Architecture and Building</div>
+        <div class="legend orange float-start">Engineering and Related Technologies</div>
+        <div class="legend cyan float-start">Agriculture, Environmental and Related Studies</div>
+        <div class="legend pink float-start">Health</div>
+        <div class="legend purple float-start">Education</div>
+        <div class="legend magenta float-start">Management and Commerce</div>
+        <div class="legend darkmagenta float-start">Society and Culture (incl Law)</div>
+        <div class="legend lime float-start">Creative Arts</div>
+        <div class="legend cadetblue float-start">Food, Hospitality and Personal Services</div>
+    </div>
+  </div>
+  <div class="col">
+    <div id="chart">
+      <h2>General Population</h2>
+      <%= pie_chart(
+        @field_of_study_data.genpop.count,
+        colors: @field_of_study_data.genpop.colors,
+        legend: false,
+      ) %>
+    </div>
+  </div>
+  <div class="col">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
+  </div>
+</div>
+
+
+<div class="flex-container row">
+  <div class="alp col">
+    <h2>ALP</h2>
+      <%= pie_chart(
+        @field_of_study_data.alp.count,
+        colors: @field_of_study_data.alp.colors,
+        legend: false
+      ) %>
+  </div>
+  <div class="coalition col">
+    <h2>Coalition</h2>
+      <%= pie_chart(
+        @field_of_study_data.coalition.count,
+        colors: @field_of_study_data.coalition.colors,
+        legend: false
+      ) %>
+  </div>
+</div>
+>>>>>>> 32a3f5dae228ec7075e1c8c2c1614c490e7c48bd

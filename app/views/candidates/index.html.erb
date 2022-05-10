@@ -6,12 +6,14 @@
     <tr>
       <th>Candidate</th>
       <th>Electorate</th>
+      <th>Party</th>
     </tr>
     </thead>
     <% @candidates.each do |candidate| %>
       <tr>
         <td><%= safe_link_to(candidate) %></td>
-        <td><%= safe_link_to(candidate.electorate) %></td>
+        <td><%= candidate.electorate.name %></td>
+        <td><%= candidate.party.name %></td>
       </tr>
     <% end %>
   </table>

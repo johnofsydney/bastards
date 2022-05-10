@@ -90,5 +90,7 @@ class ApplicationController < ActionController::Base
         colors: set_colors(data_set, color_map)
       )
   end
+
+  
 end
 

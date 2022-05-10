@@ -1,6 +1,6 @@
 class Union < ApplicationRecord
-  include PgSearch::Model
-  multisearchable against: :name
+  # include PgSearch::Model
+  # multisearchable against: :name
 
   has_many :candidates
 

@@ -32,27 +32,27 @@ class Candidate < ApplicationRecord
     )
   end
 
-  scope :winnable, -> { where(margin: -5.0..Float::INFINITY) }
-  scope :safe, -> { where(margin: 10.0..Float::INFINITY) }
+  scope :unlikely, -> { where(winnability: 'Unlikely') }
+  scope :safe, -> { where(winnability: 'Safe') }
+  scope :swing, -> { where(winnability: 'Swing') }
+
   scope :incumbent, -> { where.not(year_first_elected: nil) }
 
   scope :senate, -> { joins(:electorate).where(electorate: { name: "Senate" }) }
   scope :lower_house, -> { joins(:electorate).where.not(electorate: { name: "Senate" }) }
 
-  scope :other_profession, -> do
-    joins(:profession)
-    .where(
-      profession: { name: [
-        "Managers",
-        "Professionals",
-        "Machinery operators and drivers",
-        "Clerical and administrative workers",
-        "Labourers"
-      ]}
-    )
-  end
-
-  # Profession: I think we need to combine some of the less interesting categories into a large ‘other’ inc manager, professionals, machinery, clerical, labourers.  Consolidate categories - John
+  # scope :other_profession, -> do
+  #   joins(:profession)
+  #   .where(
+  #     profession: { name: [
+  #       "Managers",
+  #       "Professionals",
+  #       "Machinery operators and drivers",
+  #       "Clerical and administrative workers",
+  #       "Labourers"
+  #     ]}
+  #   )
+  # end
 
   def age
     return 'Unknown' unless dob.present?
@@ -64,6 +64,10 @@ class Candidate < ApplicationRecord
 
   def incumbent?
     self.year_first_elected.present?
+  end
+
+  def senator?
+    self.electorate == "Senate"
   end
 end
 
@@ -79,6 +83,7 @@ end
 #  name                   :string
 #  potential_winner       :boolean
 #  state                  :string
+#  winnability            :text
 #  year_first_elected     :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

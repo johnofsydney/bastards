@@ -5,4 +5,11 @@ module CandidatesHelper
     return link_to 'unknown', record if record
     return ''
   end
+
+  def safe_margin(candidate)
+    return "N/A" if candidate.senator?
+    return candidate.margin if candidate.margin.present?
+
+    ''
+  end
 end

@@ -1,9 +1,41 @@
+<div class="container search-container">
+  <div id="search">
+    <%= render :partial => 'home/search_form' %>
+  </div>
+</div>
+
 <h2><%= candidate.name %></h2>
 <table style="width:100%">
   <tr>
     <th>Name:</th>
     <td><%= safe_link_to(candidate) %></td>
   </tr>
+  <tr>
+    <th>Party:</th>
+    <td><%=  candidate.party.name %></td>
+  </tr>
+  <tr>
+    <th>Electorate:</th>
+    <td><%= candidate.electorate.name %></td>
+  </tr>
+  <tr>
+    <th>First Elected:</th>
+    <td><%= candidate.year_first_elected.present? ? candidate.year_first_elected : "N/A" %></td>
+  </tr>
+  <tr>
+    <th>Margin:</th>
+    <td><%= safe_margin(candidate) %></td>
+  </tr>
+  <tr>
+    <th>Winnability:</th>
+    <td><%= candidate.winnability %></td>
+  </tr>
+
+  <tr>
+    <th><br></th>
+    <td><br></td>
+  </tr>
+
   <tr>
     <th>Gender:</th>
     <td><%=  candidate.gender %></td>
@@ -13,35 +45,24 @@
     <td><%=  candidate.age %></td>
   </tr>
   <tr>
-    <th>Profession:</th>
+    <th>Prior Career:</th>
     <td><%= safe_link_to(candidate.profession) %></td>
   </tr>
   <tr>
-    <th>Union:</th>
-    <td><%= safe_link_to(candidate.union) %></td>
-  </tr>
-  <tr>
-    <th>Faction:</th>
-    <td><%= safe_link_to(candidate.faction) %></td>
+    <th>Education Level:</th>
+    <td><%= safe_link_to(candidate.qualification_level) %></td>
   </tr>
   <tr>
     <th>Field of Study:</th>
     <td><%= safe_link_to(candidate.field_of_study) %></td>
   </tr>
+
   <tr>
-    <th>Qualification Level:</th>
-    <td><%= safe_link_to(candidate.qualification_level) %></td>
+    <th>Faction:</th>
+    <td><%= safe_link_to(candidate.faction) %></td>
   </tr>
-  <tr>
-    <th>Electorate:</th>
-    <td><%= safe_link_to(candidate.electorate) %></td>
-  </tr>
-  <tr>
-    <th>First Elected:</th>
-    <td><%= candidate.year_first_elected.present? ? candidate.year_first_elected : "N/A" %></td>
-  </tr>
-  <tr>
-    <th>Margin:</th>
-    <td><%= candidate.margin.present? ? candidate.margin : '' %></td>
+<tr>
+    <th>Union:</th>
+    <td><%= safe_link_to(candidate.union) %></td>
   </tr>
 </table>

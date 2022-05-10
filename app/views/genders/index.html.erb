@@ -47,26 +47,7 @@
 
 <div class="flex-container gender row">
   <div class="col">
-    <h3>Labor Candidates in winnable seats</h3>
-    <%= pie_chart(
-      @gender_data.alp.winnable.count,
-      colors: @gender_data.alp.winnable.colors,
-      legend: false
-    ) %>
-  </div>
-  <div class="col">
-    <h3>Coalition Candidates in winnable seats</h3>
-    <%= pie_chart(
-      @gender_data.coalition.winnable.count,
-      colors: @gender_data.coalition.winnable.colors,
-      legend: false
-    ) %>
-  </div>
-</div>
-
-<div class="flex-container gender row">
-  <div class="col">
-    <h3>Labor Candidates in safe seats</h3>
+    <h3>Labor Candidates in safe seats (and safe senate positions)</h3>
     <%= pie_chart(
       @gender_data.alp.safe.count,
       colors: @gender_data.alp.safe.colors,
@@ -74,10 +55,49 @@
     ) %>
   </div>
   <div class="col">
-    <h3>Coalition Candidates in safe seats</h3>
+    <h3>Coalition Candidates in safe seats (and safe senate positions)</h3>
     <%= pie_chart(
       @gender_data.coalition.safe.count,
       colors: @gender_data.coalition.safe.colors,
+      legend: false
+    ) %>
+  </div>
+</div>
+
+<div class="flex-container gender row">
+  <div class="col">
+    <h3>Labor Candidates in swing seats (and possible-to-win senate positions)</h3>
+    <%= pie_chart(
+      @gender_data.alp.swing.count,
+      colors: @gender_data.alp.swing.colors,
+      legend: false
+    ) %>
+  </div>
+  <div class="col">
+    <h3>Coalition Candidates in swing seats (and possible-to-win senate positions)</h3>
+    <%= pie_chart(
+      @gender_data.coalition.swing.count,
+      colors: @gender_data.coalition.swing.colors,
+      legend: false
+    ) %>
+  </div>
+</div>
+</div>
+
+<div class="flex-container gender row">
+  <div class="col-lg-3">
+    <h3>Labor Candidates in unlikely seats (and unlikely-to-win senate positions)</h3>
+    <%= pie_chart(
+      @gender_data.alp.unlikely.count,
+      colors: @gender_data.alp.unlikely.colors,
+      legend: false
+    ) %>
+  </div>
+  <div class="col-lg-3">
+    <h3>Coalition Candidates in unlikely seats (and unlikely-to-win senate positions)</h3>
+    <%= pie_chart(
+      @gender_data.coalition.unlikely.count,
+      colors: @gender_data.coalition.unlikely.colors,
       legend: false
     ) %>
   </div>
@@ -117,7 +137,7 @@
     <%= pie_chart(
       @gender_data.coalition.lower_house.count,
       colors: @gender_data.coalition.lower_house.colors,
-      legend: false
+      legend: false,
     ) %>
   </div>
 </div>
