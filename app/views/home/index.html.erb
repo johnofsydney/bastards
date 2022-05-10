@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="row">
     <div class="col-md">
@@ -8,10 +6,6 @@
     </div>
     <div class="col-md">
       <h2>Some header 2</h2>
-      <p>arcu. Cras fringilla hendrerit mattis. Quisque nec turpis at felis cursus blandit vitae sed magna. Duis tincidunt condimentum diam id consectetur. Phasellus facilisis odio quam, vitae porta nisl interdum non. Mauris quis mollis ex. Etiam euismod scelerisque justo, vitae sollicitu</p>
-    </div>
-    <div class="col-md">
-      <h2>Some header 3</h2>
       <p>arcu. Cras fringilla hendrerit mattis. Quisque nec turpis at felis cursus blandit vitae sed magna. Duis tincidunt condimentum diam id consectetur. Phasellus facilisis odio quam, vitae porta nisl interdum non. Mauris quis mollis ex. Etiam euismod scelerisque justo, vitae sollicitu</p>
     </div>
   </div>
@@ -25,9 +19,13 @@
     <div class="col-md">
       <%= link_to "Button Secondary", "/candidates", class: "btn btn-secondary" %>
     </div>
-    <div class="col-md">
-      <%= link_to "Button Outline", "/candidates", class: "btn btn-outline-primary" %>
-    </div>
+  </div>
+</div>
+
+<div class="container search-container">
+  <div id="search">
+    <%= render "search_form" %>
+    <p>Search for any Candidate, Electorate, Party, Prior Career, Education or Union </p>
   </div>
 </div>
 
