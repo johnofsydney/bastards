@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :faqs
   resources :disclaimer
   resources :privacy
+  resources :information
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

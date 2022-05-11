@@ -1,48 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<div class="container search-container">
-  <div id="search">
-    <%= render :partial => 'home/search_form' %>
-
-  </div>
-</div>
-
-<div>
-  <h2>General Population</h2>
-  <%= pie_chart @genpop_field_of_studies, library: { pieSliceText: 'value' } %>
-</div>
-<div>
-  <h2>ALP</h2>
-  <%= pie_chart @alp_field_of_studies %>
-</div>
-<div>
-  <h2>Liberals</h2>
-  <%= pie_chart @lib_field_of_studies %>
-</div>
-<div>
-  <h2>Nationals</h2>
-  <%= pie_chart @nat_field_of_studies %>
-</div>
-
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#field-of-study-candidate-table').DataTable({
-            paging: false,
-            searching: false
-        });
-    });
-</script>
-=======
 <h1>Field Of Study</h1>
 <h2>Incumbent MPs and Senators who are running for re-election</h2>
-
-
-
 <div class="flex-container row">
   <div class="row">
     <div id="legend">
@@ -60,7 +17,9 @@
         <div class="legend cadetblue float-start">Food, Hospitality and Personal Services</div>
     </div>
   </div>
-  <div class="col">
+</div>
+  <div class="flex-container row">
+  <div class="col-md">
     <div id="chart">
       <h2>General Population</h2>
       <%= pie_chart(
@@ -70,14 +29,7 @@
       ) %>
     </div>
   </div>
-  <div class="col">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
-  </div>
-</div>
-
-
-<div class="flex-container row">
-  <div class="alp col">
+  <div class="alp col-md">
     <h2>ALP</h2>
       <%= pie_chart(
         @field_of_study_data.alp.count,
@@ -85,7 +37,7 @@
         legend: false
       ) %>
   </div>
-  <div class="coalition col">
+  <div class="coalition col-md">
     <h2>Coalition</h2>
       <%= pie_chart(
         @field_of_study_data.coalition.count,
@@ -94,4 +46,3 @@
       ) %>
   </div>
 </div>
->>>>>>> 32a3f5dae228ec7075e1c8c2c1614c490e7c48bd

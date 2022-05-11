@@ -1,15 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<div class="container search-container">
-  <div id="search">
-    <%= render :partial => 'home/search_form' %>
-
-  </div>
-</div>
-
 <h1>Education Level</h1>
 <h2>Incumbent MPs and Senators who are running for re-election</h2>
-
 <div class="flex-container row">
   <div class="row">
     <div id="legend">
@@ -20,21 +10,21 @@
         <div class="legend brown float-start">Up to Year 12 or Equiv</div>
     </div>
   </div>
-  <div class="col">
-    <div id="chart">
-      <h2>General Population</h2>
-      <%= pie_chart(
-        @qualification_level_data.genpop.count,
-        colors: @qualification_level_data.genpop.colors,
-        legend: false
-      ) %>
-    </div>
-  </div>
 </div>
 
 
 <div class="flex-container row">
-  <div class="alp col">
+  <div class="col-md">
+    <div id="chart">
+      <h2>General Population</h2>
+      <%= pie_chart(
+            @qualification_level_data.genpop.count,
+            colors: @qualification_level_data.genpop.colors,
+            legend: false
+          ) %>
+    </div>
+  </div>
+  <div class="alp col-md">
     <h2>ALP</h2>
       <%= pie_chart(
         @qualification_level_data.alp.count,
@@ -42,7 +32,7 @@
         legend: false
       ) %>
   </div>
-  <div class="coalition col">
+  <div class="coalition col-md">
     <h2>Coalition</h2>
       <%= pie_chart(
         @qualification_level_data.coalition.count,

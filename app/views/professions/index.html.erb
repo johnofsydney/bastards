@@ -1,34 +1,24 @@
-<p style="color: green"><%= notice %></p>
-
-<div class="container search-container">
-  <div id="search">
-    <%= render :partial => 'home/search_form' %>
-
-  </div>
-</div>
-
 <h1>Prior Career</h1>
-
-<p>We have reliable data for the incumbent MPs, and have limited our data set here to those candidates. Data is from Australian Parliament House website</p>
-<p>for the "Other category below, we have combined the following professions; "Managers", "Professionals", "Machinery operators and drivers", "Clerical and administrative workers", "Labourers"</p>
-<p>These categories represent 59% of the Australian Workforce, but less than 2% of the pool of candidates</p>
-
-
+<div class="row expandable" id="mainText">
+  <%= render "text" %>
+</div>
+<a class="btn btn-primary read-more"  href="#mainText" role="button" aria-expanded="false" aria-controls="mainText">Read More</a>
+<a class="btn btn-primary"  href="#data" role="button">See the data</a>
 
 
 <div class="flex-container row">
   <div class="row">
     <div id="legend">
       <h2>Legend</h2>
-        <div class="legend red float-start">Other</div>
         <div class="legend pink float-start">Union Officials</div>
         <div class="legend purple float-start">Political Staffers</div>
         <div class="legend orange float-start">Lawyers</div>
+        <div class="legend red float-start">All Other Roles</div>
     </div>
   </div>
-  <div class="col">
-    <div id="chart">
+  <div class="col-md graph-col">
       <h2>General Population</h2>
+    <div class="chart-wrapper">
       <%= pie_chart(
         @profession_data.genpop.count,
         colors: @profession_data.genpop.colors,
@@ -36,32 +26,37 @@
       ) %>
     </div>
   </div>
-  <div class="col">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim earum beatae distinctio officiis saepe soluta, vero ut repellendus animi molestiae nam porro quae corrupti maiores aliquid illum? Voluptate, molestias dolor?
-  </div>
-</div>
-
-
-<div class="flex-container row">
-  <div class="alp col">
-    <h2>ALP MPs</h2>
+  <div class="alp col-md graph-col">
+    <h2>ALP Incumbent MPs and Senators</h2>
+    <div class="chart-wrapper">
       <%= pie_chart(
         @profession_data.alp.count,
         colors: @profession_data.alp.colors,
         legend: false
       ) %>
+    </div>
   </div>
-  <div class="coalition col">
-    <h2>Coalition MPs</h2>
+  <div class="coalition col-md graph-col">
+    <h2>Coalition Incumbent MPs and Senators</h2>
+    <div class="chart-wrapper">
       <%= pie_chart(
         @profession_data.coalition.count,
         colors: @profession_data.coalition.colors,
         legend: false
       ) %>
   </div>
+  </div>
 </div>
 
-
+<div class="row">
+  <h2 id="data">Data</h2>
+  <p>
+    <strong>Predominant Professional of Incumbent Senators and MPs Prior to Entering Federal Parliament</strong>
+    <br />
+    <%= image_tag "experience_graphic.png" %>
+  </p>
+  <p>The data used in this analysis is from the 2016 Census. The number of lawyers was estimated using data from the Law Society. The number of Political Staffers and Union Officials was estimated at less than 65,000 which rounds to 0%.</p>
+</div>
 
 
 

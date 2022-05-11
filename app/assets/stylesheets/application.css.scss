@@ -170,11 +170,11 @@ h2.group-header {
 }
 
 div.expandable {
-  max-height: 400px;
+  max-height: 300px;
   transition: max-height 2s ease-out;
   overflow: hidden;
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
 
   &:after {
     content: '';
@@ -189,15 +189,6 @@ div.expandable {
     /* "transparent" only works here because == rgba(0,0,0,0) */
     //background-image: linear-gradient(to bottom, transparent, white 80%);
     background-image: linear-gradient(to bottom, transparent, white 20px);
-    height: 70px;
-  }
-  .read-more {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    z-index: 1;
   }
 
   &.expanded {
@@ -208,5 +199,45 @@ div.expandable {
     //background: white;
     //z-index: 2;
     max-height: 2000px;
+  }
+}
+
+.row ul {
+  margin-left: 2rem;
+}
+
+row.collapse {
+  min-height: 300px;
+}
+
+@include media-breakpoint-down(md) {
+  .site-logo img {
+    max-height: 80px;
+  }
+}
+
+.chart-wrapper {
+  margin-top: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.graph-col {
+  display: flex;
+  flex-direction: column;
+  .chart-wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.col-frontpage {
+  position: relative;
+  padding-bottom: 50px;
+  p.read-more {
+    position: absolute;
+    bottom: 0;
   }
 }
