@@ -43,7 +43,9 @@ a.navbar-brand {
 }
 
 .row {
-  margin-bottom: 2.5rem;
+  position: relative;
+  margin-bottom: 4.5rem;
+  margin-top: 2rem;
 }
 
 .col-lg-* {
@@ -167,12 +169,44 @@ h2.group-header {
   }
 }
 
-//.legend.blue {
-//    background-color: blue;
-//    color: white;
-//}
-//
-//.legend.pink {
-//    background-color: pink;
-//    color: black;
-//}
+div.expandable {
+  max-height: 400px;
+  transition: max-height 2s ease-out;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 4rem;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 30px 0;
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    //background-image: linear-gradient(to bottom, transparent, white 80%);
+    background-image: linear-gradient(to bottom, transparent, white 20px);
+    height: 70px;
+  }
+  .read-more {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    z-index: 1;
+  }
+
+  &.expanded {
+    &:after {
+      position: static;
+    }
+    //position: absolute;
+    //background: white;
+    //z-index: 2;
+    max-height: 2000px;
+  }
+}

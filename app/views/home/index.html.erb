@@ -1,36 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md">
-      <h2>Some header</h2>
-      <p>arcu. Cras fringilla hendrerit mattis. Quisque nec turpis at felis cursus blandit vitae sed magna. Duis tincidunt condimentum diam id consectetur. Phasellus facilisis odio quam, vitae porta nisl interdum non. Mauris quis mollis ex. Etiam euismod scelerisque justo, vitae sollicitu</p>
+    <div class="col-xl expandable" id="column-1">
+      <%= render "column_information" %>
+      <p class="read-more">
+      <a class="btn btn-primary" href="#column-1" role="button" aria-expanded="false" aria-controls="column-1">Read More</a>
+      </p>
     </div>
-    <div class="col-md">
-      <h2>Some header 2</h2>
-      <p>arcu. Cras fringilla hendrerit mattis. Quisque nec turpis at felis cursus blandit vitae sed magna. Duis tincidunt condimentum diam id consectetur. Phasellus facilisis odio quam, vitae porta nisl interdum non. Mauris quis mollis ex. Etiam euismod scelerisque justo, vitae sollicitu</p>
+    <div class="col-xl expandable">
+      <%= render "column_gender" %>
+      <p class="read-more">
+        <a class="btn btn-primary" href="#column-1" role="button" aria-expanded="false" aria-controls="column-1">Read More</a>
+      </p>
     </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-      <%= link_to "Button Primary", "/candidates", class: "btn btn-primary" %>
+    <div class="col-xl expandable">
+      <%= render "column_tenure" %>
+      <p class="read-more">
+        <a class="btn btn-primary" href="#column-1" role="button" aria-expanded="false" aria-controls="column-1">Read More</a>
+      </p>
     </div>
-    <div class="col-md">
-      <%= link_to "Button Secondary", "/candidates", class: "btn btn-secondary" %>
-    </div>
-  </div>
-</div>
-
-<div class="container search-container">
-  <div id="search">
-    <%= render "search_form" %>
-    <p>Search for any Candidate, Electorate, Party, Prior Career or Education </p>
   </div>
 </div>
 
 <div class="container search-container">
   <div id="search">
     <%= render "search_form" %>
+
   </div>
 </div>
