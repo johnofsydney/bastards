@@ -62,7 +62,7 @@ class Color
       "Health" => "pink",
       "Education" => "purple",
       "Management and Commerce" => "magenta",
-      "Society and Culture (incl Law)" => "darkmagenta",
+      "Society and Culture (incl Law)" => "coral",
       "Creative Arts" => "lime",
       "Food, Hospitality and Personal Services" => "cadetblue",
       "n/a" => "gray"
