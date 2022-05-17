@@ -36,23 +36,23 @@
   </tr>
   <tr>
     <th>Prior Career:</th>
-    <td><%= safe_link_to(candidate.profession) %></td>
+    <td><%= candidate.profession.name %></td>
   </tr>
   <tr>
     <th>Education Level:</th>
-    <td><%= safe_link_to(candidate.qualification_level) %></td>
+    <td><%= candidate.qualification_level.name %></td>
   </tr>
   <tr>
     <th>Field of Study:</th>
-    <td><%= safe_link_to(candidate.field_of_study) %></td>
+    <td><%= candidate.field_of_study.name %></td>
   </tr>
 
   <tr>
     <th>Faction:</th>
-    <td><%= safe_link_to(candidate.faction) %></td>
+    <td><%= candidate.faction.name %></td>
   </tr>
 <tr>
     <th>Union:</th>
-    <td><%= safe_link_to(candidate.union) %></td>
+    <td><%= candidate.union.name %></td>
   </tr>
 </table>
